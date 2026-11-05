@@ -16,7 +16,7 @@ The assistant tells you where the latest versions are, what you can do (look, gi
 
 **Probeer gerust dingen uit, je kunt niks stukmaken.** Every version is kept and everything can be undone. This is an exercise: trying things is the point.
 
-To push changes yourself you need collaborator access; ask Eric. Without it, browser assistants can still read everything and give you a new version as a file.
+To push changes yourself you need collaborator access; ask Eric. Without it, any assistant can still read everything and give you a new version as a file.
 
 ## Where to find what
 
@@ -73,13 +73,14 @@ Rule: the highest version number is leading. To make a new version, copy the lat
 | [`DESIGN.md`](DESIGN.md) | Visual rules; the values are in [`design/tokens.css`](design/tokens.css) | Anyone making pages or slides |
 | [`VERSION_CONTROL.md`](VERSION_CONTROL.md) | Branches, commits, pull requests | Everyone |
 
-Rule of thumb: content goes in `AGENTS.md`; tool files only hold what is truly tool-specific. There is no separate file for ChatGPT, because ChatGPT does not read repository files.
+Rule of thumb: content goes in `AGENTS.md`; tool files only hold what is truly tool-specific. There is no separate file for ChatGPT: with the GitHub connector it reads `AGENTS.md` like the other tools.
 
 ## Using it with your assistant
 
 - **Claude Code or the Claude app**: open the folder; `CLAUDE.md` loads the rules. Try *"Run pov-check on the latest presentation."*
 - **GitHub Copilot (VS Code)**: open the folder; Copilot reads `AGENTS.md`.
-- **ChatGPT**: create a ChatGPT project and paste `AGENTS.md` and `CASE.md` into the project instructions, or upload them as files.
+- **ChatGPT with the GitHub connector** (connected in ChatGPT's settings): ChatGPT reads the repository directly and can prepare changes for review in GitHub, such as a branch or pull request. Start every new chat with the start question above, so it points at the repo and the instructions again.
+- **ChatGPT without the connector**: it can read the public repo via the web, or paste `AGENTS.md` and `CASE.md` into the instructions of a ChatGPT project. It cannot write to the repo; it gives you new versions as files.
 - **Codex or Cursor**: open the folder; they read `AGENTS.md`.
 
 ## Tweaking the design

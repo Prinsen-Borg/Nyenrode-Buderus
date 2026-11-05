@@ -59,7 +59,7 @@ When someone asks how to work with this repository (or opens with a general ques
    > Probeer gerust dingen uit, je kunt niks stukmaken. Elke versie blijft bewaard en alles is terug te draaien. Dit is een oefening, dus juist goed om te experimenteren.
 5. **End with one question**: "Wat wil je doen?" (or the equivalent in their language).
 
-Be honest about what your tool can do. If you cannot commit and push (for example ChatGPT or claude.ai in a browser), say so: you can read the repository and produce a new version as a file to download, and the person (or a teammate with access) adds it to the repository.
+Be honest about what your tool can do. Some tools can commit, push or open a pull request (Claude Code, Copilot agent mode, Codex, ChatGPT with the GitHub connector); others can only read (a browser chat without a GitHub connection). If you cannot write to the repository, say so: produce the new version as a file to download, and the person (or a teammate with access) adds it. If you can, prefer a branch and pull request so the group can review the change.
 
 ### What makes "you cannot break it" true
 
