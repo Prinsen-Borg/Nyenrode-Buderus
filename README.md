@@ -4,6 +4,20 @@ Shared workspace for the group assignment in the Advanced IT Program at Nyenrode
 
 When you open this repository in an AI assistant, it knows the case, the requirements and how our output should look.
 
+## Start here
+
+Copy this question into any AI assistant (ChatGPT, Claude, Copilot, Gemini, ...):
+
+> **Lees de README en AGENTS.md in https://github.com/Prinsen-Borg/Nyenrode-Buderus en vertel me hoe ik met deze repo werk.**
+
+Working in Claude Code, VS Code with Copilot, Codex or Cursor with the folder open? Then this is enough: *"Lees de README en vertel me hoe ik met deze repo werk."*
+
+The assistant tells you where the latest versions are, what you can do (look, give feedback, change the design, check, write) and asks what you want to do.
+
+**Probeer gerust dingen uit, je kunt niks stukmaken.** Every version is kept and everything can be undone. This is an exercise: trying things is the point.
+
+To push changes yourself you need collaborator access; ask Eric. Without it, browser assistants can still read everything and give you a new version as a file.
+
 ## Where to find what
 
 | I am looking for… | Go to |
