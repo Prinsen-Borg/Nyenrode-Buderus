@@ -1,0 +1,31 @@
+/* Buderus case design tokens: the single place to tweak colours and type.
+   Used by tools/pov-workpage/index.html. The PowerPoint build script
+   (deliverables/presentation/build-v2.ps1) uses the same hex values; change both. */
+
+:root {
+  /* Text */
+  --ink: #18242f;      /* headings */
+  --body: #3d4b57;     /* body text */
+  --muted: #6b7a86;    /* captions, meta */
+
+  /* Surfaces and lines */
+  --line: #dde3e8;     /* hairlines, table rules */
+  --canvas: #f4f6f8;   /* page background */
+  --surface: #ffffff;  /* cards */
+
+  /* Primary */
+  --navy: #1f3a5f;     /* header band, table heads, numbers */
+  --navy-2: #2d5487;   /* eyebrows, links */
+  --tint: #e9eff6;     /* key-message callouts */
+
+  /* Signals */
+  --flag: #b8741a;     /* open points, things that shift */
+  --flag-bg: #fbf1e3;
+  --ok: #2f7a4f;       /* status: done */
+  --ok-bg: #e6f3eb;
+
+  /* Type */
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: light;
+}

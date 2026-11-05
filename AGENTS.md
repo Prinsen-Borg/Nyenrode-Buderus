@@ -21,23 +21,33 @@ This file is the **single source of truth** for every AI assistant that works in
 ```
 AGENTS.md                        ← you are here: rules for every agent
 CLAUDE.md                        ← Claude-specific additions; imports this file
-.github/copilot-instructions.md  ← Copilot-specific additions; points to this file
+.github/copilot-instructions.md  ← pointer only (Copilot reads AGENTS.md itself)
 CASE.md                          ← the assignment, requirements and deliverables
-DESIGN.md                        ← visual rules for pages and slides in this repo
+DESIGN.md                        ← visual rules; values live in design/tokens.css
 VERSION_CONTROL.md               ← branching and commit conventions
-README.md                        ← human introduction
+README.md                        ← human introduction, including what is where
+deliverables/                    ← what we hand in, with earlier and latest versions
+  presentation/                  ← v1 = working deck export, v2 = latest board deck
+  business-case/                 ← v1 = group concept, v2 = latest (md + Excel model)
+  paper/                         ← the PoV paper (6–8 pages)
 context/                         ← programme, frameworks, company reference, open points
-analysis/                        ← worked analysis (business case, ...)
-materials/                       ← source files: case, group drafts, writing guides
+literature/                      ← module 1 readings
+materials/                       ← source files: case description, group drafts, writing guides
+design/tokens.css                ← colours and fonts, used by the workpage
 tools/pov-workpage/              ← HTML workpage that walks through the whole PoV
 .claude/skills/                  ← procedures an agent follows (e.g. pov-check)
 ```
+
+### Versions
+
+- Files in `deliverables/` start with a version prefix. **The highest version is the one we work in.** Older versions stay so people can recognise their earlier work; do not edit them.
+- To start a new version, copy the latest file to the next number, note what changed at the top or in `deliverables/README.md`, and update the README table.
 
 ## 3. Working rules for agents
 
 1. **Start from `CASE.md`.** Every output must trace back to a requirement in the case. Use the `pov-check` skill to verify coverage.
 2. **Keep the central message.** The PoV argues one board choice: *standardise the digital foundation at group level; plants apply it within local OT, safety and continuity limits; scale per plant and per use case only when value, technical fit and continuity are proven.* Do not drift from it without the group deciding so.
-3. **Separate facts from assumptions.** The case gives **no pilot figures**. Never present an invented number as a pilot result. Label every figure as *case*, *public source* (with link) or *assumption*. See `analysis/business-case.md`.
+3. **Separate facts from assumptions.** The case gives **no pilot figures**. Never present an invented number as a pilot result. Label every figure as *case*, *public source* (with link) or *assumption*. See `deliverables/business-case/v2-business-case.md`.
 4. **Fiction stays fiction.** Buderus resembles the real Buderus brand of the Bosch Home Comfort Group. Use public figures only as a plausibility check and cite them. Do not imply the case describes the real company's internal situation, and do not name real employees.
 5. **Respect the deliverable limits.** Paper 6–8 pages (position-paper structure), presentation max 10 slides / 15 minutes, max 5 board decisions.
 6. **Use the course frameworks** where they fit: Business Activity Model (multimodality), Business Model & AI Canvas, COBIT 2019, Gartner Top Strategic Technology Trends 2026 (top-3 only, motivated), SAFe. See `context/frameworks.md`.
@@ -47,14 +57,14 @@ tools/pov-workpage/              ← HTML workpage that walks through the whole 
 
 ## 4. Data and publication
 
-This repository is **public on GitHub**. On 5 November 2026 the owner decided to publish the case description, group drafts and writing guides in `materials/`, because the case is fictional and the repository is meant for practice. For anything new, check:
+This repository is **public on GitHub**. On 5 November 2026 the owner decided to publish the case description, group drafts, writing guides and module 1 readings, because the case is fictional and the repository is meant for practice. For anything new, check:
 
 | Content | Allowed? |
 |---|---|
 | Our own analysis, notes, pages and summaries | Yes |
-| Group drafts from classmates | Only with the group's consent |
-| Nyenrode course material (case text, lecturer slides, readings) | Only if the repository is private; otherwise link or summarise |
-| Third-party literature (McKinsey, Gartner, HBR, ...) | No: reference it in `context/literature.md` |
+| Group drafts from classmates | Yes, as agreed for this group |
+| Case description and module 1 readings | Yes, already included |
+| Lecturers' presentations | Not included; link to Howspace |
 | Employer data (Moba or other) | **Never** |
 
 ## 5. When in doubt

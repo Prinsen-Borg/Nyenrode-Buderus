@@ -1,6 +1,22 @@
-# Business case: OEE and predictive maintenance
+# Business case v2: OEE and predictive maintenance
 
-Status: **draft, 5 November 2026**. The case gives no pilot figures. Every number below is labelled:
+**Latest version, 5 November 2026. This is the version we work in together.**
+
+| Version | File | What it is |
+|---|---|---|
+| v1 | [`v1-concept-groep.docx`](v1-concept-groep.docx) | The group's first concept: scale model (10 plants, 120 lines, €2 bn) and revenue scenarios of 15–25% extra output |
+| **v2** | this file + [`v2-business-case-model.xlsx`](v2-business-case-model.xlsx) | Sharpened version: keeps the v1 scale model, but calculates value from avoided downtime, maintenance and quality with public benchmarks, adds costs, payback and NPV |
+
+Change assumptions in the yellow cells of the Excel model (sheet *Inputs*); the sheet *Model* recalculates. If you change the structure of the model, update [`build-model.ps1`](build-model.ps1) too, so the file can be rebuilt.
+
+What changed from v1 to v2:
+
+- v1 counted **revenue**; v2 counts **contribution margin and costs**.
+- v1 assumed 15–25% extra output; v2 uses benchmark ranges for predictive maintenance (+0.4 to +1.1 OEE points).
+- v2 adds the investment (≈ €24 m), recurring costs (≈ €3.5 m/year), payback and NPV.
+- v2 keeps v1's scale model, plant list and legacy split.
+
+The case gives no pilot figures. Every number below is labelled:
 
 - **[case]** from the case description
 - **[source]** public benchmark, linked

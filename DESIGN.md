@@ -4,6 +4,10 @@ The case is about a fictional company and is presented at Nyenrode, so this repo
 
 ## 1. Colour tokens
 
+**To tweak the look, edit [`design/tokens.css`](design/tokens.css).** The workpage loads that file, so a change there shows up in the page at once. The PowerPoint build script (`deliverables/presentation/build-v2.ps1`) uses the same hex values at the top of the script; change them there too and rebuild the deck.
+
+Current values:
+
 ```css
 :root {
   --ink: #18242f;      /* headings */

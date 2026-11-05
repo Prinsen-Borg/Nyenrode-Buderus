@@ -31,7 +31,7 @@ Management wants to integrate business and IT(IV) chains further, with **SAFe** 
 
 | # | Requirement | Covered in |
 |---|---|---|
-| R1 | Updated business case based on the pilot results | `analysis/business-case.md`, workpage §6 |
+| R1 | Updated business case based on the pilot results | `deliverables/business-case/v2-business-case.md`, workpage §6 |
 | R2 | Governance between Operations, Business, Finance, IT and OT | workpage §9 |
 | R3 | Decision-making, mandates and escalation lines | workpage §9 |
 | R4 | Explicit architecture choice for edge/cloud/hybrid and the IoT/data/AI platform | workpage §7 |
