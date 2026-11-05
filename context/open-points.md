@@ -4,7 +4,7 @@ Status as of 5 November 2026. Close a point by moving it to the bottom with the 
 
 | # | Point | Proposal | Status |
 |---|---|---|---|
-| 1 | Business case counts revenue, not value; 15–25% extra output is high for predictive maintenance | Recalculate on OEE points and contribution margin; add costs and gates (see `analysis/business-case.md`) | Open |
+| 1 | Business case counts revenue, not value; 15–25% extra output is high for predictive maintenance | Recalculate on OEE points and contribution margin; add costs and gates (see `deliverables/business-case/v2-business-case.md`) | Done in v2; group to validate |
 | 2 | Central MES in Amsterdam conflicts with "plant keeps running when the link fails" | Central MES template and standards, local MES instances | Open |
 | 3 | Product mix "60% battery production" does not fit a heating manufacturer | Assembly of boilers and heat pumps plus component production | Open |
 | 4 | Slide 1 says "Brederus" | Use "Buderus" everywhere | Open |

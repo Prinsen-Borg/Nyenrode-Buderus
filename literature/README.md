@@ -1,8 +1,22 @@
-# Literature (referenced, not stored)
+# Literature
 
-These sources were provided in the programme. They are not stored in this repository because of copyright; each group member has them locally or on Howspace.
+The readings provided in module 1 are stored in this folder. The lecturers' presentations are **not** stored here; find them on Howspace.
 
-## Programme material
+## Files in this folder
+
+| File | Source |
+|---|---|
+| `WhitePaper Multimodality - Business Activity Model.pdf` | Anderson MacGyver (2022), Business Activity Model |
+| `WhitePaper Multimodality - Business Activity Model (alternate version).pdf` | Second copy as handed out (slightly different file); same title |
+| `Whitepaper-digital-strategy-Anderson-MacGyver.pdf` | Anderson MacGyver, digital strategy |
+| `products-and-platforms-technology-operating-model-ready 2020.pdf` | McKinsey (2020), product and platform operating model |
+| `The State of Organizations 2026 Mckinzey & Company.pdf` | McKinsey & Company (2026) |
+| `Driving Digital Strategy_Part1.pdf` | Gupta (2018), part 1 |
+| `Digital-strategy-The-four-fights-you-have-to-win-final Oct 2018.pdf` | Digital strategy: the four fights you have to win |
+| `executive-guidance-speed-up-your-digital-business-transformation.pdf` | Executive guidance on digital business transformation |
+| `business-model-canvas.docx` | Business Model Canvas template (Strategyzer, CC BY-SA 3.0) |
+
+## Programme material (not stored, on Howspace)
 
 - Wijers, G. (2026, 8 October). *Strategy & Platforms* and *Sourcing Strategy and Tech & Data Organizations*. Advanced IT Program, Nyenrode Business University.
 - De Wit, B. (2026, 7 October). *Strategic Leadership & the Digital Revolution*. Advanced IT Program, Nyenrode Business University.
