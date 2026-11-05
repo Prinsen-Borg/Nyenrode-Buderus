@@ -24,7 +24,7 @@ CLAUDE.md                        ← Claude-specific additions; imports this fil
 .github/copilot-instructions.md  ← pointer only (Copilot reads AGENTS.md itself)
 CASE.md                          ← the assignment, requirements and deliverables
 DESIGN.md                        ← visual rules; values live in design/tokens.css
-VERSION_CONTROL.md               ← branching and commit conventions
+VERSION_CONTROL.md               ← push to main, commit messages, undoing
 README.md                        ← human introduction, including what is where
 deliverables/                    ← what we hand in, with earlier and latest versions
   presentation/                  ← v1 = working deck export, v2 = latest board deck
@@ -59,7 +59,7 @@ When someone asks how to work with this repository (or opens with a general ques
    > Probeer gerust dingen uit, je kunt niks stukmaken. Elke versie blijft bewaard en alles is terug te draaien. Dit is een oefening, dus juist goed om te experimenteren.
 5. **End with one question**: "Wat wil je doen?" (or the equivalent in their language).
 
-Be honest about what your tool can do. Some tools can commit, push or open a pull request (Claude Code, Copilot agent mode, Codex, ChatGPT with the GitHub connector); others can only read (a browser chat without a GitHub connection). If you cannot write to the repository, say so: produce the new version as a file to download, and the person (or a teammate with access) adds it. If you can, prefer a branch and pull request so the group can review the change.
+Be honest about what your tool can do. Some tools can commit and push (Claude Code, Copilot agent mode, Codex, ChatGPT with the GitHub connector); others can only read (a browser chat without a GitHub connection). If you cannot write to the repository, say so: produce the new version as a file to download, and the person (or a teammate with access) adds it. If you can, **commit and push directly to `main`** as a new version, so everyone sees it at once. Do not open branches or pull requests that someone else has to approve; see `VERSION_CONTROL.md`.
 
 ### What makes "you cannot break it" true
 
@@ -79,7 +79,7 @@ These rules are not optional; the reassurance above depends on them.
 5. **Respect the deliverable limits.** Paper 6–8 pages (position-paper structure), presentation max 10 slides / 15 minutes, max 5 board decisions.
 6. **Use the course frameworks** where they fit: Business Activity Model (multimodality), Business Model & AI Canvas, COBIT 2019, Gartner Top Strategic Technology Trends 2026 (top-3 only, motivated), SAFe. See `context/frameworks.md`.
 7. **Write plainly.** Short sentences, concrete numbers, no hype words. Dutch for content the group presents unless the group chooses English; English for repository files.
-8. **Make small, reviewable changes.** Follow `VERSION_CONTROL.md`.
+8. **Make small changes and push them to `main`.** Follow `VERSION_CONTROL.md`.
 9. **Leave no secrets and no personal data.** No passwords, tokens, personal contact details or employer-confidential information.
 
 ## 5. Data and publication

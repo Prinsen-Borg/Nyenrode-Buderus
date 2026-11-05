@@ -71,7 +71,7 @@ Rule: the highest version number is leading. To make a new version, copy the lat
 | [`.github/copilot-instructions.md`](.github/copilot-instructions.md) | Pointer to `AGENTS.md`, no rules of its own | Older Copilot setups |
 | [`CASE.md`](CASE.md) | The assignment, requirements R1–R10, deliverables | Everyone |
 | [`DESIGN.md`](DESIGN.md) | Visual rules; the values are in [`design/tokens.css`](design/tokens.css) | Anyone making pages or slides |
-| [`VERSION_CONTROL.md`](VERSION_CONTROL.md) | Branches, commits, pull requests | Everyone |
+| [`VERSION_CONTROL.md`](VERSION_CONTROL.md) | Push to main, commit messages, undoing | Everyone |
 
 Rule of thumb: content goes in `AGENTS.md`; tool files only hold what is truly tool-specific. There is no separate file for ChatGPT: with the GitHub connector it reads `AGENTS.md` like the other tools.
 
@@ -79,7 +79,7 @@ Rule of thumb: content goes in `AGENTS.md`; tool files only hold what is truly t
 
 - **Claude Code or the Claude app**: open the folder; `CLAUDE.md` loads the rules. Try *"Run pov-check on the latest presentation."*
 - **GitHub Copilot (VS Code)**: open the folder; Copilot reads `AGENTS.md`.
-- **ChatGPT with the GitHub connector** (connected in ChatGPT's settings): ChatGPT reads the repository directly and can prepare changes for review in GitHub, such as a branch or pull request. Start every new chat with the start question above, so it points at the repo and the instructions again.
+- **ChatGPT with the GitHub connector** (connected in ChatGPT's settings): ChatGPT reads the repository and can commit changes directly to `main`. Start every new chat with the start question above, so it points at the repo and the instructions again.
 - **ChatGPT without the connector**: it can read the public repo via the web, or paste `AGENTS.md` and `CASE.md` into the instructions of a ChatGPT project. It cannot write to the repo; it gives you new versions as files.
 - **Codex or Cursor**: open the folder; they read `AGENTS.md`.
 
@@ -93,4 +93,4 @@ The look is neutral on purpose. Change colours and fonts in [`design/tokens.css`
 git clone https://github.com/Prinsen-Borg/Nyenrode-Buderus.git
 ```
 
-Then open the folder in your assistant of choice. See [`VERSION_CONTROL.md`](VERSION_CONTROL.md) for how we commit and review.
+Then open the folder in your assistant of choice. See [`VERSION_CONTROL.md`](VERSION_CONTROL.md) for how we commit and push.
