@@ -19,7 +19,7 @@ What changed from v1 to v2:
 The case gives no pilot figures. Every number below is labelled:
 
 - **[case]** from the case description
-- **[source]** public benchmark, linked
+- **[source]** public benchmark, linked; all sources are listed in [`../../context/sources.md`](../../context/sources.md)
 - **[group]** from the group's concept business case
 - **[assumption]** our estimate, to be validated with pilot data, Finance, Operations and Sales
 

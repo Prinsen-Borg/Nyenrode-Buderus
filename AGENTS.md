@@ -30,7 +30,7 @@ deliverables/                    ← what we hand in, with earlier and latest ve
   presentation/                  ← v1 = working deck export, v2 = latest board deck
   business-case/                 ← v1 = group concept, v2 = latest (md + Excel model)
   paper/                         ← the PoV paper (6–8 pages)
-context/                         ← programme, frameworks, company reference, open points
+context/                         ← programme, frameworks, company reference, sources, open points
 literature/                      ← module 1 readings
 materials/                       ← source files: case description, group drafts, writing guides
 design/tokens.css                ← colours and fonts, used by the workpage
@@ -74,7 +74,7 @@ These rules are not optional; the reassurance above depends on them.
 
 1. **Start from `CASE.md`.** Every output must trace back to a requirement in the case. Use the `pov-check` skill to verify coverage.
 2. **Keep the central message.** The PoV argues one board choice: *standardise the digital foundation at group level; plants apply it within local OT, safety and continuity limits; scale per plant and per use case only when value, technical fit and continuity are proven.* Do not drift from it without the group deciding so.
-3. **Separate facts from assumptions.** The case gives **no pilot figures**. Never present an invented number as a pilot result. Label every figure as *case*, *public source* (with link) or *assumption*. See `deliverables/business-case/v2-business-case.md`.
+3. **Separate facts from assumptions.** The case gives **no pilot figures**. Never present an invented number as a pilot result. Label every figure as *case*, *public source* (with link) or *assumption*. Every public source goes in `context/sources.md`. See `deliverables/business-case/v2-business-case.md`.
 4. **Fiction stays fiction.** Buderus resembles the real Buderus brand of the Bosch Home Comfort Group. Use public figures only as a plausibility check and cite them. Do not imply the case describes the real company's internal situation, and do not name real employees.
 5. **Respect the deliverable limits.** Paper 6–8 pages (position-paper structure), presentation max 10 slides / 15 minutes, max 5 board decisions.
 6. **Use the course frameworks** where they fit: Business Activity Model (multimodality), Business Model & AI Canvas, COBIT 2019, Gartner Top Strategic Technology Trends 2026 (top-3 only, motivated), SAFe. See `context/frameworks.md`.

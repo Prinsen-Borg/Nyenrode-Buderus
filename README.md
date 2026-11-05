@@ -30,7 +30,8 @@ To push changes yourself you need collaborator access; ask Eric. Without it, bro
 | A walk through the whole PoV (Dutch) | [`tools/pov-workpage/index.html`](tools/pov-workpage/index.html) |
 | What the group still has to decide | [`context/open-points.md`](context/open-points.md) |
 | Frameworks (BAM, COBIT, SAFe, Gartner, ...) | [`context/frameworks.md`](context/frameworks.md) |
-| Real-company figures used as a plausibility check | [`context/company-reference.md`](context/company-reference.md) |
+| Which real company the case is likely based on | [`context/company-reference.md`](context/company-reference.md) |
+| All sources behind our figures | [`context/sources.md`](context/sources.md) |
 | Programme, deadlines and paper structure | [`context/programme.md`](context/programme.md) |
 | The live working deck | [Google Slides](https://docs.google.com/presentation/d/1kC8puREHKKjRJ-3MsSN5h03dvNwbiGbqCRT9cOtdZKU/edit) |
 

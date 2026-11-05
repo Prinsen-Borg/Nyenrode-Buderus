@@ -1,6 +1,23 @@
 # Company reference (plausibility check only)
 
-The case company **Buderus** resembles the real **Buderus** heating brand, part of the **Bosch Home Comfort Group** (formerly Bosch Thermotechnik), headquartered in Wetzlar, Germany. The case itself is fictional. Use the figures below only to keep our assumptions plausible, and always cite them.
+## Which company is the case based on?
+
+The group got the tip that Buderus resembles a real company. Our working hypothesis (5 November 2026), **not confirmed by the lecturers**:
+
+| Hypothesis | Why we think so | Confidence |
+|---|---|---|
+| **1. The real Buderus brand of the Bosch Home Comfort Group** (formerly Bosch Thermotechnik, Wetzlar, Germany) | Same name; heating manufacturer in the energy sector; multiple production and assembly sites in Europe; demand driven by the energy transition (heat pumps) | High |
+| **2. Inspired by industry experience at a competitor, e.g. BDR Thermea** (Remeha, De Dietrich, Baxi; Apeldoorn) | The case names are Dutch and look invented; the programme director's public profile (kick-off slides, module 1) lists him as CIO/Group IT director at BDR Thermea 2012–2019 | Speculative |
+
+How we use this:
+
+- We treat Buderus as **fictional** and use public figures of the real brand only to keep our assumptions plausible.
+- We never claim the case describes the real company's internal situation.
+- If the lecturers confirm or deny the hypothesis, update this section.
+
+## Public figures
+
+The case itself is fictional. Use the figures below only to keep our assumptions plausible, and always cite them.
 
 | Fact | Value | Source |
 |---|---|---|

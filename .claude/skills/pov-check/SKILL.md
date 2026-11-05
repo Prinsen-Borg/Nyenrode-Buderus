@@ -15,7 +15,7 @@ A short, honest list of what the draft still misses, so the group can fix it bef
    - Paper: 6–8 pages, position-paper structure (introduction with thesis, counter-arguments, three arguments, conclusion, APA references).
    - Slides: max. 10, the five decisions early, titles that state a conclusion.
    - Board decisions: max. five, each a decision rather than a status update.
-5. **Check figures.** Every number must be labelled case, public source (with link) or assumption. Flag any number presented as a pilot result: the case has none.
+5. **Check figures.** Every number must be labelled case, public source (with link) or assumption, and every public source must be listed in `context/sources.md`. Flag any number presented as a pilot result: the case has none.
 6. **Check consistency** with `deliverables/business-case/v2-business-case.md`, the latest presentation in `deliverables/presentation/`, `context/open-points.md` and the central message in `AGENTS.md` §4.
 7. **Check hygiene.** No template leftovers, no AI leftovers ("If you want, I can…"), consistent company name (Buderus), one language.
 
