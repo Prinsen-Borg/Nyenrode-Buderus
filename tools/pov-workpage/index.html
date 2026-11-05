@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buderus Point of View</title>
+<style>
+/* Neutral palette on purpose: this is Nyenrode group work about a fictional company, not a Moba output */
+:root {
+  --ink: #18242f; --body: #3d4b57; --muted: #6b7a86; --line: #dde3e8;
+  --canvas: #f4f6f8; --surface: #ffffff; --navy: #1f3a5f; --navy-2: #2d5487;
+  --tint: #e9eff6; --flag: #b8741a; --flag-bg: #fbf1e3; --ok: #2f7a4f; --ok-bg: #e6f3eb;
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--canvas); color: var(--body); font: 400 16px/1.6 var(--font); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+h1, h2, h3 { color: var(--ink); margin: 0; line-height: 1.25; }
+h1 { font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem); font-weight: 650; }
+h2 { font-size: clamp(1.35rem, 1.15rem + .8vw, 1.8rem); font-weight: 650; }
+h3 { font-size: 1.02rem; font-weight: 650; margin-bottom: 6px; }
+p { margin: 10px 0 0; max-width: 75ch; }
+ul, ol { margin: 10px 0 0; padding-left: 20px; }
+li { margin: 4px 0; }
+strong { color: var(--ink); }
+.eyebrow { font-size: 13px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; color: var(--navy-2); margin: 0 0 6px; }
+
+/* Top navigation */
+nav { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; gap: 4px; overflow-x: auto; padding-top: 8px; padding-bottom: 8px; scrollbar-width: thin; }
+nav a { flex: 0 0 auto; font-size: 14px; color: var(--navy); text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+nav a:hover { background: var(--tint); }
+
+header.hero { background: var(--navy); color: #fff; padding: 56px 0 48px; }
+header.hero h1, header.hero strong { color: #fff; }
+header.hero .eyebrow { color: #bcd0e8; }
+header.hero p { color: #dbe6f2; font-size: 18px; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 28px; }
+.fact { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 12px 14px; }
+.fact b { display: block; color: #fff; font-size: 17px; }
+.fact span { font-size: 13px; color: #c9d7e7; }
+@media (max-width: 800px) { .facts { grid-template-columns: 1fr 1fr; } }
+
+section { padding: 48px 0 0; scroll-margin-top: 56px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; margin-top: 20px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.grid2 .card, .grid3 .card { margin-top: 0; }
+@media (max-width: 860px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+
+.callout { border-radius: 10px; padding: 16px 18px; margin-top: 20px; }
+.callout.flag { background: var(--flag-bg); border: 1px solid #ecd2ad; }
+.callout.flag h3 { color: #7a4a0c; }
+.callout.key { background: var(--tint); border: 1px solid #cddbeb; }
+.callout.key p.big { font-size: 1.2rem; color: var(--ink); font-weight: 600; margin: 0; max-width: none; }
+
+/* Tables become stacked cards on phones */
+table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+th { text-align: left; font-weight: 650; color: #fff; background: var(--navy); padding: 9px 12px; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) {
+  table, thead, tbody, tr, td { display: block; }
+  thead { display: none; }
+  tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  td { border: 0; padding: 3px 0; }
+  td[data-l]::before { content: attr(data-l); display: block; font-size: 12px; font-weight: 600; color: var(--muted); }
+}
+.pill { display: inline-block; font-size: 12px; font-weight: 650; line-height: 1; padding: 5px 9px; border-radius: 50px; white-space: nowrap; }
+.p-ok { background: var(--ok-bg); color: var(--ok); }
+.p-part { background: var(--flag-bg); color: #8a5510; }
+.p-no { background: #f6e3e3; color: #8c2f2f; }
+.p-mod { background: var(--tint); color: var(--navy); }
+
+/* Decisions */
+.decisions { counter-reset: d; list-style: none; padding: 0; margin-top: 16px; }
+.decisions li { counter-increment: d; position: relative; padding: 12px 14px 12px 56px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin: 10px 0; }
+.decisions li::before { content: counter(d); position: absolute; left: 14px; top: 12px; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 650; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.decisions li b { color: var(--ink); }
+
+/* Purdue stack */
+.stack { display: grid; gap: 8px; margin-top: 20px; }
+.layer { display: grid; grid-template-columns: 170px 1fr 1fr; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; align-items: start; }
+.layer .lvl { font-weight: 650; color: var(--ink); font-size: 14px; }
+.layer .lvl small { display: block; font-weight: 400; color: var(--muted); }
+.layer .now, .layer .to { font-size: 14px; line-height: 1.5; }
+.layer .now b, .layer .to b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 2px; }
+.layer.gap { background: var(--flag-bg); border-color: #ecd2ad; }
+@media (max-width: 760px) { .layer { grid-template-columns: 1fr; } }
+
+/* BAM */
+.bam { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 20px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.quad { padding: 14px 16px; border: 1px solid var(--line); min-height: 150px; }
+.quad h3 { font-size: .95rem; }
+.quad h3 small { font-weight: 400; color: var(--muted); }
+.act { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; margin-top: 8px; font-size: 14px; color: var(--ink); line-height: 1.4; }
+.act small { display: block; color: var(--body); font-size: 12.5px; }
+.act.shift { border: 2px solid var(--flag); }
+@media (max-width: 640px) { .bam { grid-template-columns: 1fr; } }
+
+/* Roadmap */
+.road { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+.phase { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; position: relative; }
+.phase .when { font-size: 13px; color: var(--muted); }
+.gate { margin-top: 10px; font-size: 13px; background: var(--tint); border-radius: 8px; padding: 8px 10px; color: var(--navy); }
+@media (max-width: 860px) { .road { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .road { grid-template-columns: 1fr; } }
+
+.formula { font-family: Consolas, "Courier New", monospace; font-size: 14px; background: var(--canvas); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 12px; overflow-wrap: anywhere; }
+.todo { font-size: 14px; color: #7a4a0c; }
+.todo::before { content: "Open: "; font-weight: 650; }
+footer { margin-top: 64px; padding: 28px 0 40px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav aria-label="Inhoud"><div class="wrap">
+  <a href="#case">Case</a><a href="#eisen">Eisen</a><a href="#kern">Kernboodschap</a><a href="#besluiten">5 besluiten</a>
+  <a href="#vraag">Vraagstructuur</a><a href="#asis">As-is</a><a href="#bc">Businesscase</a><a href="#arch">Architectuur</a>
+  <a href="#bam">BAM</a><a href="#gov">Governance</a><a href="#org">Organisatie &amp; talent</a><a href="#risk">Risico's &amp; COBIT</a>
+  <a href="#gartner">Gartner</a><a href="#impact">Proces- &amp; OT-impact</a><a href="#roadmap">Roadmap</a><a href="#oplevering">Oplevering</a><a href="#open">Open punten</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Advanced IT Program · Groep 3 · Case Digitale Transformatie</p>
+    <h1>Buderus: opschalen op bewezen waarde, met lokale regie waar de productie dat vraagt</h1>
+    <p>Werkpagina om de case samen door te lopen en alle gevraagde onderdelen van de Point of View in te vullen. Inhoud is een voorstel; alles wat met <strong>Open:</strong> begint, moet de groep nog valideren of beslissen.</p>
+    <div class="facts">
+      <div class="fact"><b>16 december</b><span>Directieoverleg en slotdag</span></div>
+      <div class="fact"><b>Paper 6–8 pagina's</b><span>Point of View, met POV-richtlijnen</span></div>
+      <div class="fact"><b>Max. 10 slides</b><span>15 minuten presentatie, vakjury</span></div>
+      <div class="fact"><b>Max. 5 besluiten</b><span>Expliciet voor de directie</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 1. CASE -->
+<section id="case">
+  <p class="eyebrow">1 · De case in één minuut</p>
+  <h2>Een geslaagde pilot, maar geen schaalbare basis</h2>
+  <div class="grid3">
+    <div class="card"><h3>Situatie</h3><p>Multinational in de energiesector met meerdere productie- en assemblagelocaties. De energietransitie drijft de vraag op, en daarmee de druk op efficiency, kwaliteit en kosten. Eén pilot laat zien dat sensordata predictive maintenance, hogere beschikbaarheid en betere kwaliteit mogelijk maakt.</p></div>
+    <div class="card"><h3>Complicatie</h3><p>Het landschap is een mix van legacy, industriële systemen en lokale OT. OT is bedrijfskritisch, niet alle apparatuur is te integreren en fabrieken zijn terughoudend bij alles wat de continuïteit raakt. Er is een duidelijke achterstand in data-, AI- en OT/IT-skills.</p></div>
+    <div class="card"><h3>Vraag van de CEO</h3><p>Hoe optimaliseer je de IT/OT-besturing zodat data analytics, AI en IoT structureel in productie en onderhoud worden geïntegreerd, met grip op veiligheid, continuïteit en schaalbaarheid?</p></div>
+  </div>
+  <div class="callout key">
+    <p class="eyebrow">Kernspanning uit de case</p>
+    <p class="big">Hoe standaardiseer je digitaal op groepsniveau zonder plant-specifieke OT-randvoorwaarden te negeren?</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Stakeholders en hun vraag</h3>
+      <ul>
+        <li><strong>CEO</strong>: een Point of View en heldere besluiten.</li>
+        <li><strong>CFO</strong>: geïnteresseerd maar kritisch op investering, terugverdientijd en risico.</li>
+        <li><strong>RvC</strong>: budget al goedgekeurd voor IoT, AI/ML, dataplatforms en opleiding.</li>
+        <li><strong>Plantmanagement en OT</strong>: continuïteit en veiligheid eerst.</li>
+        <li><strong>Directie</strong>: SAFe als werkmodel voor veranderinitiatieven.</li>
+      </ul></div>
+    <div class="card"><h3>Wat ons opvalt</h3>
+      <ul>
+        <li>Het budget is er al. De vraag is dus niet <em>of</em>, maar <em>hoe en onder welke voorwaarden</em> geïnvesteerd wordt.</li>
+        <li>De case geeft geen pilotcijfers. Een geloofwaardige businesscase laat zien welke cijfers nodig zijn, in plaats van ze te verzinnen.</li>
+        <li>De echte bottleneck is niet de AI, maar de OT/IT-grens: segmentatie, integratie en eigenaarschap.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 2. EISEN -->
+<section id="eisen">
+  <p class="eyebrow">2 · Wat moet erin</p>
+  <h2>Elke eis uit de opdracht, en waar we hem afdekken</h2>
+  <p>Status geeft weer hoe ver het huidige werk (werkdeck slides 1–12, aanpakdocument, businesscase-concept) is.</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>Eis uit de case</th><th>Waar in de PoV</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Eis">Geactualiseerde businesscase op basis van pilotresultaten</td><td data-l="Waar">§6 Businesscase</td><td data-l="Status"><span class="pill p-part">Concept, herzien</span></td></tr>
+        <tr><td data-l="Eis">Governance tussen Operations, Business, Finance, IT en OT</td><td data-l="Waar">§9 Governance</td><td data-l="Status"><span class="pill p-part">In aanpakdoc, nog niet in deck</span></td></tr>
+        <tr><td data-l="Eis">Besluitvorming, mandaten en escalatielijnen</td><td data-l="Waar">§9 Governance</td><td data-l="Status"><span class="pill p-part">In aanpakdoc</span></td></tr>
+        <tr><td data-l="Eis">Expliciete architectuurkeuze edge/cloud/hybrid en IoT/data/AI-platform</td><td data-l="Waar">§7 Architectuur</td><td data-l="Status"><span class="pill p-part">As-is goed; to-be nog open</span></td></tr>
+        <tr><td data-l="Eis">Rollen Group IT, plant, engineering/OT, agile teams, security</td><td data-l="Waar">§9 en §10</td><td data-l="Status"><span class="pill p-part">In aanpakdoc</span></td></tr>
+        <tr><td data-l="Eis">IT/OT-talentmanagement en aanpak data-, AI- en OT/IT-skills</td><td data-l="Waar">§10 Organisatie en talent</td><td data-l="Status"><span class="pill p-part">In aanpakdoc</span></td></tr>
+        <tr><td data-l="Eis">Cybersecurity-, privacy-, OT- en third-party risico's, gekoppeld aan COBIT 2019</td><td data-l="Waar">§11 Risico's en COBIT</td><td data-l="Status"><span class="pill p-ok">Goed uitgewerkt</span></td></tr>
+        <tr><td data-l="Eis">Business Model &amp; AI Canvas, Business Activity Model</td><td data-l="Waar">§6 en §8</td><td data-l="Status"><span class="pill p-no">Nog niet gedaan</span></td></tr>
+        <tr><td data-l="Eis">Gartner Top Strategic Technology Trends 2026, top-3 gemotiveerd</td><td data-l="Waar">§12 Gartner</td><td data-l="Status"><span class="pill p-ok">Keuze gemaakt</span></td></tr>
+        <tr><td data-l="Eis">Proces- en OT-impactanalyse en advies verandermanagement</td><td data-l="Waar">§13 Impact</td><td data-l="Status"><span class="pill p-part">Kort in aanpakdoc</span></td></tr>
+        <tr><td data-l="Eis">Maximaal vijf besluiten voor de directie</td><td data-l="Waar">§4 Besluiten</td><td data-l="Status"><span class="pill p-ok">Geformuleerd</span></td></tr>
+        <tr><td data-l="Eis">SAFe als werkmodel</td><td data-l="Waar">§10 Organisatie</td><td data-l="Status"><span class="pill p-part">Genoemd, nog uitwerken</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 3. KERN -->
+<section id="kern">
+  <p class="eyebrow">3 · Kernboodschap (thesis)</p>
+  <h2>Eén bestuurlijke keuze: federatief standaardiseren</h2>
+  <div class="callout key">
+    <p class="big">Buderus standaardiseert de digitale basis op groepsniveau en laat fabrieken die toepassen binnen lokale OT-, veiligheids- en continuïteitskaders. Opschalen gebeurt per fabriek en per usecase, alleen wanneer waarde, technische geschiktheid en continuïteit zijn aangetoond.</p>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>Centraal (Group IT)</h3><p>Architectuur, data- en securitystandaarden, het IoT/data/AI-platform, integratiepatronen en herbruikbare edge-bouwstenen.</p></div>
+    <div class="card"><h3>Lokaal (plant + OT)</h3><p>Veilige productie, besturing (PLC/SCADA/MES), onderhoudsvensters en het go/no-go-mandaat bij productie-impact.</p></div>
+    <div class="card"><h3>Samen (SAFe-teams)</h3><p>Productteams per usecase met Operations en OT erin; platformteams leveren gedeelde capabilities.</p></div>
+  </div>
+  <p>Volgorde in het paper volgens de position-paper-structuur: inleiding met thesis, tegenargumenten (bijvoorbeeld "rol de pilot nu overal uit" en "laat elke fabriek zelf kiezen"), drie eigen argumenten (waarde, architectuur, organisatie), conclusie met actieplan.</p>
+</section>
+
+<!-- 4. BESLUITEN -->
+<section id="besluiten">
+  <p class="eyebrow">4 · Besluiten voor de directie (max. 5)</p>
+  <h2>Wat de directie op 16 december besluit</h2>
+  <ol class="decisions">
+    <li><b>Koers.</b> Instemmen met een hybride, federatieve OT/IoT/data/AI-architectuur en groepsbrede minimumstandaarden (segmentatie, edge, dataplatform, security).</li>
+    <li><b>Eigenaarschap.</b> Een Digital Operations Steering Group instellen met de mandaten en escalatielijnen uit §9, inclusief lokaal go/no-go voor productie-impact.</li>
+    <li><b>Investering.</b> Het goedgekeurde budget gefaseerd vrijgeven via investeringsgates met financiële, technische en veiligheidscriteria; geen automatische groepsbrede uitrol.</li>
+    <li><b>Risicogrenzen.</b> Bevestigen dat veiligheid en productiecontinuïteit leidend zijn: AI adviseert, de mens beslist; schrijven naar besturing vraagt aparte goedkeuring.</li>
+    <li><b>Mensen.</b> Capaciteit en budget vrijmaken voor OT/IT-integratierollen, een digital champion per plant en een leerpad voor operators, onderhoud en engineering.</li>
+  </ol>
+  <p class="todo">Bepalen of besluit 3 een bedrag of een percentage van het RvC-budget noemt per gate.</p>
+</section>
+
+<!-- 5. VRAAGSTRUCTUUR -->
+<section id="vraag">
+  <p class="eyebrow">5 · Vraagstructuur (uit werkdeck slide 9)</p>
+  <h2>Drie deelvragen dragen het antwoord</h2>
+  <div class="grid3">
+    <div class="card"><h3>R1 · Waarde: is het het waard?</h3><ul><li>Businesscase per usecase (strategie, product, technische fit, sourcingmodel)</li><li>Benodigde fundamentele capabilities</li></ul><p><a href="#bc">→ §6 Businesscase</a></p></div>
+    <div class="card"><h3>R2 · Ontwerp: hoe orkestreren en architecteren we dit?</h3><ul><li>Architectuur (as-is, to-be, edge/cloud)</li><li>Migratiepad</li></ul><p><a href="#arch">→ §7 Architectuur</a> · <a href="#roadmap">§14 Roadmap</a></p></div>
+    <div class="card"><h3>R3 · Organisatie: hoe richten we ons in voor succes?</h3><ul><li>Organisatieontwerp, governance, beleid</li><li>Risk- en controlframeworks, risicoregister</li></ul><p><a href="#gov">→ §9</a> · <a href="#org">§10</a> · <a href="#risk">§11</a></p></div>
+  </div>
+</section>
+
+<!-- 6. AS-IS -->
+<section id="asis">
+  <p class="eyebrow">6a · As-is (uit werkdeck slide 4)</p>
+  <h2>Gefragmenteerde silo's, geen gemeenschappelijk dataplatform</h2>
+  <p>De pilot draait als geïsoleerde Azure-PoC. Die schaalt niet naar Profibus-legacy-PLC's en vlakke plantnetwerken zonder een OT-DMZ en edge-gateway.</p>
+  <div class="stack">
+    <div class="layer"><div class="lvl">Level 4<small>Enterprise (Amsterdam HQ)</small></div><div class="now"><b>Nu</b>SAP ECC 6.0 (ERP), Siemens Teamcenter (PLM), SQL Server 2016 DWH, Power BI met handmatige CSV-imports voor OEE. Centrale AI/MLOps ontbreekt.</div><div class="to"><b>Aandachtspunt</b>ECC 6.0 nadert het einde van regulier onderhoud; houd de OT/data-roadmap los van een eventuele S/4-migratie.</div></div>
+    <div class="layer gap"><div class="lvl">IT/OT-grens<small>Security gap</small></div><div class="now"><b>Nu</b>Geen gestandaardiseerde OT-DMZ. Directe OEM-TeamViewer/VPN-tunnels. Handmatige CSV/SFTP-transfers.</div><div class="to"><b>Aandachtspunt</b>Grootste risico en grootste schaalblokkade tegelijk. Moet als eerste standaard worden.</div></div>
+    <div class="layer"><div class="lvl">Pilotsite<small>Amsterdam-lijn</small></div><div class="now"><b>Nu</b>Hydra MES + InfluxDB-PoC, Node-RED-gateway naar Azure ML, Siemens S7-1500 + OPC-UA.</div><div class="to"><b>Aandachtspunt</b>Moderne protocollen maken de pilot relatief makkelijk; niet representatief voor de rest.</div></div>
+    <div class="layer"><div class="lvl">Standaardlijnen<small>102 lijnen</small></div><div class="now"><b>Nu</b>Wonderware MES + IBM Maximo, Siemens WinCC + Ignition HMI, S7-1500 en ControlLogix PLC's.</div><div class="to"><b>Aandachtspunt</b>Twee PLC-families en twee SCADA's: edge-laag moet multi-protocol zijn.</div></div>
+    <div class="layer gap"><div class="lvl">Legacy-lijnen<small>18 lijnen</small></div><div class="now"><b>Nu</b>Papieren logs en Access-databases, WinCC v6.0 op Windows XP/7, S7-300 via Profibus/RS-485.</div><div class="to"><b>Aandachtspunt</b>Niet patchbaar: eerst isoleren (zones en conduits), daarna retrofit-sensoren of vervanging afwegen.</div></div>
+  </div>
+  <p class="todo">Slide 4 noemt "102 standard lines (72 battery / 48 assembly)"; 72 + 48 = 120 is het totaal inclusief legacy. Label corrigeren.</p>
+</section>
+
+<!-- 6. BUSINESSCASE -->
+<section id="bc">
+  <p class="eyebrow">6b · Businesscase (R1)</p>
+  <h2>Reken vanuit vermeden stilstand en OEE, niet vanuit omzet</h2>
+  <p>Het huidige concept rekent 15–25% extra productiecapaciteit door naar €300–500 miljoen extra omzet. De opbouw is transparant en de aannames zijn netjes gelabeld, maar de CFO zal hier als eerste op schieten.</p>
+  <div class="callout flag">
+    <h3>Waarom het huidige model kwetsbaar is</h3>
+    <ul>
+      <li><strong>15–25% is erg hoog voor predictive maintenance.</strong> PdM verbetert vooral de beschikbaarheid. Bij een OEE van rond 72% (het voorbeelddashboard) betekent +20% output een OEE van ruim 86%: dat vraagt verbetering op beschikbaarheid, prestatie én kwaliteit tegelijk.</li>
+      <li><strong>Omzet is geen waarde.</strong> Extra omzet levert alleen marge op als er vraag, materiaal en ketencapaciteit is. De directie beslist op contributiemarge en kasstroom.</li>
+      <li><strong>Geen kosten, dus geen terugverdientijd.</strong> Zonder investering en run-kosten is het geen businesscase maar een batenschatting.</li>
+      <li><strong>Het aanpakdocument zegt zelf</strong> geen pilotcijfers te verzinnen. Het concept doet dat impliciet wel met de productiewinst-percentages.</li>
+    </ul>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Voorgestelde rekenregel (per lijn, per jaar)</h3>
+      <div class="formula">Netto baten = vermeden ongeplande stilstand × waarde per uur<br>+ vermeden kwaliteitsverlies (scrap, herstel, claims)<br>+ bespaarde onderhoudskosten (spoed, onnodige vervanging)<br>+ extra verkoopbare output × contributiemarge<br>− terugkerende kosten (licenties, cloud, beheer, modellen)</div>
+      <p>Daarna: drie scenario's (voorzichtig, basis, gunstig), terugverdientijd en NCW per fase. Finance keurt de rekenregels, Operations de operationele aannames, Sales het verkoopbare aandeel.</p></div>
+    <div class="card"><h3>Hoe de bestaande cijfers wél bruikbaar blijven</h3>
+      <ul>
+        <li>Behoud het schaalmodel: 10 fabrieken, 120 lijnen, €2 mld omzet, 60/40-mix, 18 legacy-lijnen. Dat geeft de orde van grootte.</li>
+        <li>Herformuleer de scenario's als <strong>OEE-punten</strong> in plaats van productiepercentages, en laat zien welk deel van de lijnen per fase meedoet.</li>
+        <li>Toon "1% extra output ≈ €20 mln omzet" als gevoeligheid, vermenigvuldigd met een contributiemarge die Finance invult.</li>
+        <li>Zet de legacy-lijnen apart: hogere kosten, later in de roadmap, mogelijk eerst alleen isoleren.</li>
+      </ul></div>
+  </div>
+  <div class="card">
+    <h3>Gegevens die we uit de pilot nodig hebben (en nog niet hebben)</h3>
+    <table>
+      <thead><tr><th>Gegeven</th><th>Waarom</th><th>Eigenaar</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Gegeven">Nulmeting en OEE per lijn (beschikbaarheid, prestatie, kwaliteit)</td><td data-l="Waarom">Basis voor elke baat; voorkomt dubbeltelling</td><td data-l="Eigenaar">Operations pilotlocatie</td></tr>
+        <tr><td data-l="Gegeven">Ongeplande stilstand, MTTR, onderhoudsuren vóór en na</td><td data-l="Waarom">Grootste en best meetbare baat van PdM</td><td data-l="Eigenaar">Onderhoud</td></tr>
+        <tr><td data-l="Gegeven">Bruikbare, vals-positieve en gemiste meldingen</td><td data-l="Waarom">Bepaalt vertrouwen en extra werklast</td><td data-l="Eigenaar">Onderhoud + data team</td></tr>
+        <tr><td data-l="Gegeven">Pilotkosten versus terugkerende kosten</td><td data-l="Waarom">Terugverdientijd en NCW</td><td data-l="Eigenaar">Finance</td></tr>
+        <tr><td data-l="Gegeven">Verkoopbaar aandeel van extra output en contributiemarge</td><td data-l="Waarom">Omzet vertalen naar waarde</td><td data-l="Eigenaar">Sales + Finance</td></tr>
+        <tr><td data-l="Gegeven">Integratiekosten per fabriekstype (standaard, legacy)</td><td data-l="Waarom">Fasering en volgorde van fabrieken</td><td data-l="Eigenaar">OT/Engineering + Group IT</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Business Model &amp; AI Canvas per usecase (nog in te vullen)</h3>
+    <table>
+      <thead><tr><th>Vraag</th><th>Predictive maintenance (eerste usecase)</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Vraag">Voor wie wordt waarde geleverd?</td><td data-l="PdM">Onderhoud en plantmanagement; indirect klanten via leverbetrouwbaarheid</td></tr>
+        <tr><td data-l="Vraag">Welk proces verandert?</td><td data-l="PdM">Van vast interval en storing-gedreven naar conditie-gedreven onderhoud</td></tr>
+        <tr><td data-l="Vraag">Welke data en modellen?</td><td data-l="PdM">Trillings-, temperatuur- en stroomdata, onderhoudshistorie (Maximo), MES-context</td></tr>
+        <tr><td data-l="Vraag">Welke menselijke beslissing wordt ondersteund?</td><td data-l="PdM">Of en wanneer een monteur ingrijpt; de mens beslist</td></tr>
+        <tr><td data-l="Vraag">Welke risico's en kosten?</td><td data-l="PdM">Vals-positieven, sensorretrofit, OT-koppeling, modelbeheer</td></tr>
+      </tbody>
+    </table>
+    <p class="todo">Tweede usecase kiezen (bijvoorbeeld kwaliteitsinspectie met camera of energieoptimalisatie) en het canvas invullen.</p>
+  </div>
+</section>
+
+<!-- 7. ARCHITECTUUR -->
+<section id="arch">
+  <p class="eyebrow">7 · Architectuurkeuze (R2)</p>
+  <h2>Hybride: besturing lokaal, intelligentie centraal, een harde grens ertussen</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Laag</th><th>Functie</th><th>Ontwerpkeuze</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Laag">Machine en besturing (L0–L2)</td><td data-l="Functie">Veilige, directe besturing</td><td data-l="Keuze">PLC, SCADA en veiligheidsfuncties blijven lokaal en autonoom. AI neemt geen veiligheidskritische besturing over.</td></tr>
+        <tr><td data-l="Laag">Plant (L3): MES en edge</td><td data-l="Functie">Productie-uitvoering, inname, buffering</td><td data-l="Keuze">MES blijft per fabriek draaien (of als lokaal-redundante instantie van een centraal template). Edge-gateways verzamelen data, bufferen bij uitval en draaien gevalideerde modellen.</td></tr>
+        <tr><td data-l="Laag">OT-IT-grens (L3.5)</td><td data-l="Functie">Gecontroleerde uitwisseling</td><td data-l="Keuze">Gestandaardiseerde OT-DMZ per plant, brokers/gateways, alleen noodzakelijke datastromen, beheerde remote access in plaats van OEM-tunnels.</td></tr>
+        <tr><td data-l="Laag">Groepsplatform (L4, cloud)</td><td data-l="Functie">Data, analytics, AI over fabrieken heen</td><td data-l="Keuze">Centraal IoT/data/AI-platform: opslag, datakwaliteit, modeltraining, modelregister, MLOps. Vervangt de geïsoleerde PoC.</td></tr>
+        <tr><td data-l="Laag">Terugkoppeling</td><td data-l="Functie">Werkbare acties</td><td data-l="Keuze">Adviezen via bestaande processen (Maximo/CMMS, MES). Terugschrijven naar besturing alleen na aparte veiligheids- en changegoedkeuring.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout flag">
+    <h3>Spanning in het businesscase-concept</h3>
+    <p>Het concept plaatst ERP, de centrale MES, het DWH en het AI-model in Amsterdam. Centraal ERP, DWH en AI is logisch. Een <strong>centrale MES</strong> botst echter met het eigen principe dat de fabriek doorwerkt bij uitval van de verbinding: MES stuurt de productie-uitvoering (ISA-95 level 3) en hoort daarom lokaal, of op zijn minst lokaal-redundant. Advies: centraal MES-<em>template</em> en standaarden, lokale <em>instanties</em>.</p>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>Principe 1</h3><p>Fabriek werkt door bij netwerk- of clouduitval.</p></div>
+    <div class="card"><h3>Principe 2</h3><p>Herbruikbare groepsstandaarden, minimale koppeling met besturingsnetwerken.</p></div>
+    <div class="card"><h3>Principe 3</h3><p>Traceerbare data en modellen, en een expliciete exit uit leveranciersafhankelijkheid.</p></div>
+  </div>
+  <p class="todo">Platformkeuze (bijvoorbeeld Azure IoT/Fabric versus Siemens Industrial Edge/Insights Hub) bewust open laten tot een eisen- en leveranciersbeoordeling, of een voorkeur uitspreken?</p>
+</section>
+
+<!-- 8. BAM -->
+<section id="bam">
+  <p class="eyebrow">8 · Business Activity Model</p>
+  <h2>Niet alles standaardiseren, wel bewust kiezen wat</h2>
+  <p>Het BAM maakt de kernspanning hanteerbaar: per activiteit bepalen of groepsstandaard of lokale specificiteit past. Oranje kaders zijn activiteiten waarvan de modaliteit verschuift.</p>
+  <div class="bam">
+    <div class="quad"><h3>Specialized <small>· specifiek, stabiel</small></h3>
+      <div class="act">Productielijnen veilig besturen<small>Plant-specifiek: machines, protocollen, veiligheid. Lokaal mandaat.</small></div>
+      <div class="act">OT-security per plant<small>Zones en conduits op maat van de installatie</small></div>
+    </div>
+    <div class="quad"><h3>Distinct <small>· specifiek, responsief</small></h3>
+      <div class="act shift">Storingen voorspellen met AI (PdM)<small>Nu: experiment op één lijn. Wordt na bewezen waarde Adaptive.</small></div>
+      <div class="act">Nieuwe AI-usecases ontdekken<small>Kwaliteit met camera, energie, kennisassistent</small></div>
+    </div>
+    <div class="quad"><h3>Common <small>· generiek, stabiel</small></h3>
+      <div class="act">Finance, inkoop, ERP-processen<small>Marktstandaard, kosten-efficiënt</small></div>
+      <div class="act shift">Onderhoud plannen en registreren<small>Nu per plant anders (Maximo, papier). Wordt één groepsstandaard.</small></div>
+    </div>
+    <div class="quad"><h3>Adaptive <small>· generiek, responsief</small></h3>
+      <div class="act shift">Machinedata verzamelen en ontsluiten<small>Nu lokaal en handmatig (CSV). Wordt herbruikbare platformdienst.</small></div>
+      <div class="act">Productie-inzicht en OEE-rapportage<small>Bewezen oplossingen, snel aanpasbaar</small></div>
+    </div>
+  </div>
+  <p>Consequentie: <strong>Common en Adaptive</strong> horen bij Group IT als standaard (platform, data, onderhoudsproces). <strong>Specialized</strong> blijft lokaal onder plantmanagement en OT. <strong>Distinct</strong> wordt een productteam met business case en ROI-sturing, tot de usecase is bewezen en naar Adaptive opschuift.</p>
+  <p class="todo">Groep: is "onderhoud plannen" echt Common, of maakt de plant-specificiteit het Specialized?</p>
+</section>
+
+<!-- 9. GOVERNANCE -->
+<section id="gov">
+  <p class="eyebrow">9 · Governance, mandaten en escalatie (R3)</p>
+  <h2>Een Digital Operations Steering Group, met lokaal vetorecht op veiligheid</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Rol</th><th>Verantwoordelijkheid en mandaat</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Rol">Directie</td><td data-l="Mandaat">Doelen, risicobereidheid en investeringskaders; beslist over groepsbrede financiering en opschaling.</td></tr>
+        <tr><td data-l="Rol">Digital Operations Steering Group</td><td data-l="Mandaat">Prioriteert usecases, bewaakt baten, risico's, capaciteit en afhankelijkheden; bereidt gate-besluiten voor. Operations, Finance, CIO, OT/Engineering, Security en plantvertegenwoordiging.</td></tr>
+        <tr><td data-l="Rol">Operations / business-eigenaar</td><td data-l="Mandaat">Eigenaar van de usecase, de procesverandering en de bedrijfsuitkomst.</td></tr>
+        <tr><td data-l="Rol">CFO / Finance</td><td data-l="Mandaat">Beoordeelt businesscase, batenmeting, kosten en afwijkingen.</td></tr>
+        <tr><td data-l="Rol">CIO / Group IT</td><td data-l="Mandaat">Eigenaar van groepsarchitectuur, platformen, integratiestandaarden en IT-roadmap.</td></tr>
+        <tr><td data-l="Rol">OT / Engineering</td><td data-l="Mandaat">Machine-integratie, OT-veiligheid, lokale technische beperkingen, test- en wijzigingsprocedures.</td></tr>
+        <tr><td data-l="Rol">Plantmanager</td><td data-l="Mandaat">Lokaal go/no-go voor productie-impact, onderhoudsvensters en operationele acceptatie.</td></tr>
+        <tr><td data-l="Rol">CISO / security en privacy</td><td data-l="Mandaat">Stelt eisen, beoordeelt uitzonderingen en kan een uitrol blokkeren bij onaanvaardbaar risico.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Escalatielijnen</h3>
+    <table>
+      <thead><tr><th>Situatie</th><th>Escalatie naar</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Situatie">Risico voor veiligheid, kwaliteit of continuïteit in één plant</td><td data-l="Naar">Plantmanager pauzeert test of uitrol direct</td></tr>
+        <tr><td data-l="Situatie">Uitzondering op architectuur- of securitystandaard</td><td data-l="Naar">Architecture/Security Board; alleen met eigenaar, einddatum en compenserende maatregelen</td></tr>
+        <tr><td data-l="Situatie">Budget- of batenafwijking</td><td data-l="Naar">Steering Group en Finance; boven tolerantie naar de directie</td></tr>
+        <tr><td data-l="Situatie">Ernstig incident of risico voor meerdere fabrieken</td><td data-l="Naar">Direct naar CIO, Operations-directeur en CISO, met crisis- en continuïteitsprocedure</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="todo">Wie zit de Steering Group voor: COO (Operations) of CIO? Advies: COO, omdat de waarde in de fabriek ligt.</p>
+</section>
+
+<!-- 10. ORGANISATIE & TALENT -->
+<section id="org">
+  <p class="eyebrow">10 · Organisatie, SAFe en talent</p>
+  <h2>Productteams voor usecases, platformteams voor de basis</h2>
+  <div class="grid2">
+    <div class="card"><h3>SAFe-inrichting</h3>
+      <ul>
+        <li><strong>Productteams</strong> (per usecase, bijvoorbeeld PdM): business-eigenaar, data scientist, OT-engineer, onderhoudsexpert, ontwikkelaar.</li>
+        <li><strong>Platformteams</strong>: edge en connectiviteit, data- en AI-platform, OT-security, integratie.</li>
+        <li>Eén ART "Digital Operations" met PI-planning waar plants aanschuiven; plantmanager of champion als stakeholder in elke PI.</li>
+        <li>Past bij het product-en-platformmodel (McKinsey): teams sturen op uitkomst, platforms op hergebruik.</li>
+      </ul></div>
+    <div class="card"><h3>Rollen per laag</h3>
+      <ul>
+        <li><strong>Group IT</strong>: architectuur, platform, standaarden, security-services.</li>
+        <li><strong>Plantmanagement</strong>: adoptie, procesverandering, go/no-go.</li>
+        <li><strong>Engineering/OT</strong>: integratie, segmentatie, wijzigingsbeheer op de vloer.</li>
+        <li><strong>Agile teams</strong>: leveren usecases in kleine, toetsbare stappen.</li>
+        <li><strong>Security</strong>: onafhankelijke toets, ook op OT.</li>
+      </ul></div>
+  </div>
+  <div class="card">
+    <h3>Talentaanpak: eerst meten, dan bouwen</h3>
+    <table>
+      <thead><tr><th>Doelgroep</th><th>Wat ze moeten kunnen</th><th>Hoe</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Doelgroep">Operators en onderhoud</td><td data-l="Kunnen">Meldingen begrijpen, beperkingen kennen, weten wanneer menselijk oordeel leidend is</td><td data-l="Hoe">Training op de pilotlocatie, terugmeldknop voor foute meldingen</td></tr>
+        <tr><td data-l="Doelgroep">OT/IT-integratie</td><td data-l="Kunnen">Industriële protocollen, segmentatie, gateways, veilige wijzigingen</td><td data-l="Hoe">Gemengde OT/IT-teams, rotatie tussen plants en Group IT</td></tr>
+        <tr><td data-l="Doelgroep">Data en analytics</td><td data-l="Kunnen">Datakwaliteit, context, eigenaarschap, interpretatie</td><td data-l="Hoe">Data-academy, digital champion per plant</td></tr>
+        <tr><td data-l="Doelgroep">AI en modelbeheer</td><td data-l="Kunnen">Validatie, monitoring, drift, terugvalprocedures</td><td data-l="Hoe">Werven plus partner voor kennisoverdracht</td></tr>
+        <tr><td data-l="Doelgroep">Leiders en product owners</td><td data-l="Kunnen">Op waarde sturen, baten meten, over grenzen heen aansturen</td><td data-l="Hoe">Leiderschapsprogramma, gekoppeld aan de gates</td></tr>
+      </tbody>
+    </table>
+    <p>Meet niet alleen deelname, maar of teams zelfstandig usecases kunnen beoordelen, beheren en veilig aanpassen.</p>
+  </div>
+</section>
+
+<!-- 11. RISICO'S -->
+<section id="risk">
+  <p class="eyebrow">11 · Risico's en COBIT 2019</p>
+  <h2>De grootste risico's zitten op de OT/IT-grens</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Risico</th><th>Maatregel</th><th>COBIT 2019</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Risico">Onvoldoende netwerksegmentatie OT/IT</td><td data-l="Maatregel">Zones en conduits, alleen noodzakelijke stromen, monitoring en periodieke review</td><td data-l="COBIT">APO13, DSS05, BAI10</td></tr>
+        <tr><td data-l="Risico">Onveilige remote access (OEM-tunnels)</td><td data-l="Maatregel">Eén beheerd toegangspunt, persoonlijke accounts, tijdgebonden autorisatie, logging</td><td data-l="COBIT">APO10, APO13, DSS05</td></tr>
+        <tr><td data-l="Risico">Onveilige machine- en sensorintegratie</td><td data-l="Maatregel">Inventarisatie, test in veilige omgeving, OT-beoordeling vóór aansluiting</td><td data-l="COBIT">BAI02, BAI03, BAI10</td></tr>
+        <tr><td data-l="Risico">Ongecontroleerde patches en wijzigingen (o.a. Windows XP)</td><td data-l="Maatregel">OT-wijzigingsprocedure, test- en terugvalplan, onderhoudsvensters; niet-patchbare systemen isoleren</td><td data-l="COBIT">BAI06, BAI10, DSS01</td></tr>
+        <tr><td data-l="Risico">Leveranciersafhankelijkheid</td><td data-l="Maatregel">Toets support, security, data-export, lifecycle en exit vóór selectie</td><td data-l="COBIT">APO10, APO12, APO05</td></tr>
+        <tr><td data-l="Risico">Onbetrouwbare of gemanipuleerde data</td><td data-l="Maatregel">Herkomst, tijdstempels, kwaliteitscontroles, modelmonitoring</td><td data-l="COBIT">APO14, BAI10, MEA02</td></tr>
+        <tr><td data-l="Risico">Productieverstoring door uitval platform, netwerk of edge</td><td data-l="Maatregel">Lokale autonome werking, buffering, continuïteitstesten, stopcriteria</td><td data-l="COBIT">EDM03, DSS01, DSS04</td></tr>
+        <tr><td data-l="Risico">Persoonsgegevens in telemetrie of logs</td><td data-l="Maatregel">Dataminimalisatie, rolgebaseerde toegang, bewaartermijnen, privacytoets</td><td data-l="COBIT">APO14, APO13, MEA03</td></tr>
+        <tr><td data-l="Risico">Onjuist AI-advies of oververtrouwen</td><td data-l="Maatregel">Menselijke beoordeling, drift-monitoring, duidelijke grenzen, handmatige fallback</td><td data-l="COBIT">EDM03, APO12, BAI03, DSS06</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>COBIT 2019</h3><p>Het besturings- en verantwoordingskader: wie beslist, wie is eigenaar, hoe wordt gemeten.</p></div>
+    <div class="card"><h3>IEC 62443 en ISO 27001</h3><p>De technische OT- en informatiebeveiligingsnormen onder COBIT: zones, conduits, security levels.</p></div>
+    <div class="card"><h3>ISO/IEC 42001</h3><p>Managementsysteem voor AI: risico's, transparantie en menselijk toezicht op modellen.</p></div>
+  </div>
+  <p class="todo">Werkdeck slide 10 ("Frameworks to leverage") bevat nog voorbeeldtekst uit het template (churn, €38m, 1,2 GW). Vervangen door de rol van elk framework zoals hierboven.</p>
+</section>
+
+<!-- 12. GARTNER -->
+<section id="gartner">
+  <p class="eyebrow">12 · Gartner Top Strategic Technology Trends 2026</p>
+  <h2>Top-3 die echt relevant is voor Buderus</h2>
+  <div class="grid3">
+    <div class="card"><h3>1 · Physical AI</h3><p>Koppelt AI aan machines en apparatuur. Voor Buderus begint dit bij condition monitoring en onderhoudsadvies; autonome acties op de lijn pas na aparte veiligheidsvalidatie.</p></div>
+    <div class="card"><h3>2 · AI Security Platforms</h3><p>Zichtbaarheid, gebruiksbeleid en AI-specifieke beveiliging. Onderdeel van de bredere securityarchitectuur, geen vervanging van OT-segmentatie.</p></div>
+    <div class="card"><h3>3 · Domain-Specific Language Models</h3><p>Ontsluiten van onderhoudsdocumentatie en storingshistorie voor monteurs. Begrensd, op gevalideerde bronnen, nooit voor besturing.</p></div>
+  </div>
+  <p>Alternatief om te overwegen: <strong>Preemptive Cybersecurity</strong> in plaats van DSLM, gezien de OT-risico's en de Windows XP-lijnen. Motiveer de keuze in één zin per trend en vermeld dat het een selectie is, geen rangorde van Gartner.</p>
+</section>
+
+<!-- 13. IMPACT -->
+<section id="impact">
+  <p class="eyebrow">13 · Proces- en OT-impact en verandermanagement</p>
+  <h2>Van reageren op storingen naar onderhoud op conditie</h2>
+  <div class="grid2">
+    <div class="card"><h3>Van</h3><ul><li>Onderhoud op vaste intervallen en na storing</li><li>Data in papieren logs, Access en CSV-exports</li><li>OEM's loggen rechtstreeks in via eigen tunnels</li><li>Elke plant eigen werkwijze en tools</li></ul></div>
+    <div class="card"><h3>Naar</h3><ul><li>Afwijkingen eerder gesignaleerd; monteur beoordeelt en beslist</li><li>Machinedata automatisch via edge naar het platform</li><li>Remote access via één beheerd toegangspunt</li><li>Groepsstandaard voor het onderhoudsproces, lokale uitvoering</li></ul></div>
+  </div>
+  <div class="card">
+    <h3>Wat er gebeurt als het misgaat</h3>
+    <table>
+      <thead><tr><th>Situatie</th><th>Gedrag van het systeem en de mensen</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Situatie">Foutieve melding</td><td data-l="Gedrag">Monteur markeert als vals-positief; feedback gaat terug naar het model</td></tr>
+        <tr><td data-l="Situatie">Netwerkuitval naar het platform</td><td data-l="Gedrag">Productie draait door; edge buffert data; geen adviezen tot herstel</td></tr>
+        <tr><td data-l="Situatie">Onverwachte machineconditie</td><td data-l="Gedrag">Bestaande veiligheidsprocedures blijven leidend; AI adviseert alleen</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card"><h3>Verandermanagement</h3>
+    <ul>
+      <li>Betrek operators en monteurs vóór het ontwerp, niet bij de uitrol.</li>
+      <li>Maak zichtbaar welke beslissingen AI ondersteunt en welke bij mensen blijven.</li>
+      <li>Laat de pilotlocatie het verhaal vertellen aan de volgende plants (peer-to-peer).</li>
+      <li>Digital champion per plant; succes zichtbaar maken op de vloer (OEE-dashboard).</li>
+    </ul></div>
+</section>
+
+<!-- 14. ROADMAP -->
+<section id="roadmap">
+  <p class="eyebrow">14 · Programma en roadmap</p>
+  <h2>Vier fasen, elke stap achter een gate</h2>
+  <div class="road">
+    <div class="phase"><p class="when">Fase 1 · Q1 2027</p><h3>Valideren en funderen</h3><p>Pilotcijfers controleerbaar maken. OT-DMZ- en remote-access-standaard. Platformkeuze.</p><div class="gate">Gate: businesscase door Finance gevalideerd</div></div>
+    <div class="phase"><p class="when">Fase 2 · Q2–Q3 2027</p><h3>Tweede plant</h3><p>Eén standaardplant met S7 en ControlLogix. Edge-blauwdruk testen, PdM op 2–3 lijnen.</p><div class="gate">Gate: baten aangetoond buiten de pilotlocatie</div></div>
+    <div class="phase"><p class="when">Fase 3 · Q4 2027–2028</p><h3>Uitrol standaardlijnen</h3><p>Plant voor plant, volgens profiel. Tweede usecase. Legacy-lijnen eerst isoleren.</p><div class="gate">Gate: per plant go/no-go plus securitytoets</div></div>
+    <div class="phase"><p class="when">Fase 4 · vanaf 2028</p><h3>Legacy en verdieping</h3><p>Retrofit of vervanging van legacy-lijnen op basis van eigen businesscase. Nieuwe AI-usecases.</p><div class="gate">Gate: investeringsbesluit per lijngroep</div></div>
+  </div>
+  <p class="todo">Termijnen zijn een voorstel van de groep, niet uit de case. Afstemmen of we kwartalen of fasen zonder datum tonen.</p>
+</section>
+
+<!-- 15. OPLEVERING -->
+<section id="oplevering">
+  <p class="eyebrow">15 · Oplevering</p>
+  <h2>Paper en presentatie volgen dezelfde lijn</h2>
+  <div class="grid2">
+    <div class="card"><h3>Paper (6–8 pagina's, position paper)</h3>
+      <ol>
+        <li>Inleiding: haak (pilot werkt, maar schaalt niet), context, thesis, roadmap van het paper</li>
+        <li>Tegenargumenten en weerlegging: "nu overal uitrollen" en "elke plant kiest zelf"</li>
+        <li>Argument 1, waarde: businesscase en gates</li>
+        <li>Argument 2, ontwerp: architectuur, BAM, risico's en COBIT</li>
+        <li>Argument 3, organisatie: governance, SAFe, talent, verandering</li>
+        <li>Conclusie: vijf besluiten en actieplan</li>
+        <li>Bronnen (APA)</li>
+      </ol></div>
+    <div class="card"><h3>Presentatie (max. 10 slides, 15 minuten)</h3>
+      <ol>
+        <li>Titel en kernboodschap</li>
+        <li>De vijf besluiten (antwoord eerst)</li>
+        <li>Situatie, complicatie, vraag</li>
+        <li>As-is architectuur en de bottleneck</li>
+        <li>Businesscase: rekenregel, scenario's, gates</li>
+        <li>To-be architectuur (hybride, Purdue)</li>
+        <li>BAM: wat centraal, wat lokaal</li>
+        <li>Governance en organisatie (SAFe, rollen, escalatie)</li>
+        <li>Risico's, COBIT en Gartner top-3</li>
+        <li>Roadmap, verandering en vervolgstappen</li>
+      </ol></div>
+  </div>
+  <p>Het werkdeck heeft nu 6 secties en daarna circa 80 templateslides. Advies: de templateslides verwijderen zodra de layouts gekozen zijn, en het 10-slidelimiet als harde grens nemen.</p>
+</section>
+
+<!-- 16. OPEN -->
+<section id="open">
+  <p class="eyebrow">16 · Open punten voor de groep</p>
+  <h2>Wat we nog moeten besluiten of herstellen</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Punt</th><th>Voorstel</th></tr></thead>
+      <tbody>
+        <tr><td data-l="Punt">Businesscase rekent omzet, niet waarde; 15–25% is hoog</td><td data-l="Voorstel">Herrekenen op OEE-punten en contributiemarge; kosten en gates toevoegen</td></tr>
+        <tr><td data-l="Punt">Centrale MES in Amsterdam</td><td data-l="Voorstel">Centraal template, lokale instanties</td></tr>
+        <tr><td data-l="Punt">Naam in werkdeck: "Brederus" op slide 1</td><td data-l="Voorstel">Overal "Buderus"</td></tr>
+        <tr><td data-l="Punt">Slide 4: lijnen-label 102 versus 72/48</td><td data-l="Voorstel">Corrigeren naar 120 totaal, waarvan 18 legacy</td></tr>
+        <tr><td data-l="Punt">Slide 10 bevat templatetekst</td><td data-l="Voorstel">Vervangen door de rol per framework</td></tr>
+        <tr><td data-l="Punt">BAM en Business Model &amp; AI Canvas ontbreken</td><td data-l="Voorstel">Opnemen zoals in §6b en §8</td></tr>
+        <tr><td data-l="Punt">Taal: deck Engels, documenten Nederlands</td><td data-l="Voorstel">Eén taal kiezen voor paper en presentatie</td></tr>
+        <tr><td data-l="Punt">Aanpakdocument bevat nog AI-restanten ("Als je wilt, kan ik…", "Bovenkant formulier") en een planning vanaf 16 oktober</td><td data-l="Voorstel">Opschonen en planning vanaf november herzien</td></tr>
+        <tr><td data-l="Punt">Wie zit de Steering Group voor</td><td data-l="Voorstel">COO, met CIO als vice-voorzitter</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Advanced IT Program, Nyenrode · Groep 3 · Case Buderus · Werkpagina, versie 3 november 2026. Gebaseerd op de casebeschrijving, het aanpakdocument, het businesscase-concept, het architectuurdeck en werkdeck-slides 1–12. Alle cijfers buiten de case zijn aannames van de groep.</div>
+</footer>
+
+</body>
+</html>
