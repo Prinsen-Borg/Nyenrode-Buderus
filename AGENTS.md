@@ -47,7 +47,7 @@ tools/pov-workpage/              ← HTML workpage that walks through the whole 
 
 ## 4. Data and publication
 
-This repository is **public on GitHub** unless the owner has made it private. Before adding a file, check:
+This repository is **public on GitHub**. On 5 November 2026 the owner decided to publish the case description, group drafts and writing guides in `materials/`, because the case is fictional and the repository is meant for practice. For anything new, check:
 
 | Content | Allowed? |
 |---|---|
