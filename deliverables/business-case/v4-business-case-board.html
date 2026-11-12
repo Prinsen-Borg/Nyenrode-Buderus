@@ -1,0 +1,156 @@
+<!doctype html><html lang='nl'><head><meta charset='utf-8'><title>Business case innovatieprogramma</title><style>
+@page { size: A4 landscape; margin: 14mm 16mm; }
+:root { --ink:#161616; --sec:#525252; --help:#6f6f6f; --line:#e0e0e0; --layer:#f4f4f4; --blue:#0f62fe; --blue-bg:#edf5ff;
+        --green:#24a148; --green-bg:#defbe6; --red:#da1e28; --amber-bg:#fcf4d6; }
+* { box-sizing:border-box; }
+html,body { margin:0; background:#fff; color:var(--ink); font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; font-size:9.8pt; line-height:1.4; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page { page-break-after:always; height:181mm; position:relative; }
+.page:last-child { page-break-after:auto; }
+.eyebrow { font-size:8.5pt; letter-spacing:.06em; text-transform:uppercase; color:var(--sec); }
+h1 { font-weight:300; font-size:21pt; margin:1.5mm 0 1mm; line-height:1.15; }
+.lead { color:var(--sec); font-size:10pt; margin:0 0 4mm; max-width:230mm; }
+h2 { font-size:11pt; font-weight:600; margin:0 0 1.5mm; padding-bottom:1.5mm; border-bottom:2px solid var(--blue); }
+.cols { display:grid; grid-template-columns:1fr 1fr; gap:9mm; }
+.cols3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7mm; }
+table { width:100%; border-collapse:collapse; font-size:9pt; }
+th { background:var(--line); text-align:left; font-weight:600; padding:1.2mm 2mm; }
+td { padding:1mm 2mm; border-bottom:1px solid var(--line); vertical-align:top; }
+td.n, th.n { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+tr.tot td { font-weight:600; border-top:1px solid #8d8d8d; }
+tr.key td { background:var(--blue-bg); font-weight:600; }
+.tag { font-size:8pt; color:var(--sec); white-space:nowrap; }
+.tag.b { color:#0043ce; } .tag.a { color:#8a3800; }
+.kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; margin-bottom:4mm; }
+.kpi { background:var(--layer); padding:2.5mm 4mm; border-top:3px solid var(--blue); }
+.kpi .v { font-size:17pt; font-weight:300; line-height:1.1; }
+.kpi .l { font-size:8.5pt; color:var(--sec); }
+.box { background:var(--blue-bg); padding:3.5mm 4.5mm; border-left:3px solid var(--blue); margin-bottom:5mm; }
+.flag { background:var(--amber-bg); padding:3mm 4mm; border-left:3px solid #b28600; font-size:9.5pt; }
+.lever { background:var(--layer); padding:3.5mm 4mm; }
+.lever b { display:block; margin-bottom:1mm; }
+.lever .v { color:var(--blue); font-weight:600; }
+ol.steps { margin:0; padding-left:5mm; } ol.steps li { margin-bottom:1.5mm; }
+.foot { position:absolute; bottom:0; left:0; right:0; font-size:8pt; color:var(--help); border-top:1px solid var(--line); padding-top:1.5mm; display:flex; justify-content:space-between; }
+.small { font-size:8pt; color:var(--sec); }
+</style></head><body>
+<section class="page">
+  <div class="eyebrow">Pagina 1 · Uitgangspunten en aannames</div>
+  <h1>Een realistische basis: 5% meer capaciteit, geen 20%</h1>
+  <p class="lead">De casus geeft geen pilotcijfers. Daarom kalibreren we het groepsconcept op openbare cijfers van
+  vergelijkbare bedrijven en op sectorbenchmarks. Alle aannames worden in de eerste uitrolgolf met pilotdata gevalideerd.</p>
+  <div class="cols" style="grid-template-columns:2.2fr 1fr">
+    <div>
+      <h2>Aannames</h2>
+      <table><tr><th>Aanname</th><th class="n">Waarde</th><th>Label</th><th>Onderbouwing</th></tr>
+      <tr><td>Omzet alle fabrieken</td><td class="n">€ 2,0 mld</td><td class="tag ">groep</td><td class="small">Past tussen peers: Ariston € 2,7 mld, BDR Thermea € 1,9 mld</td></tr><tr><td>Fabrieken / productielijnen</td><td class="n">10 / 120 (18 legacy)</td><td class="tag ">groep</td><td class="small">Uitrol in drie golven, legacy als laatste</td></tr><tr><td>OEE vandaag → doel</td><td class="n">65% → 68%</td><td class="tag a">aanname</td><td class="small">Typische fabriek 60–67%, world class 85%</td></tr><tr><td>Extra capaciteit</td><td class="n">5%</td><td class="tag a">aanname</td><td class="small">Concept ging uit van 15–25%; te hoog voor de sector</td></tr><tr><td>Verkoopbaar deel extra capaciteit</td><td class="n">50%</td><td class="tag a">aanname</td><td class="small">Markt groeit ≈ 3% per jaar; Sales valideert</td></tr><tr><td>Brutomarge op extra omzet</td><td class="n">47%</td><td class="tag b">bron</td><td class="small">Materiaal ≈ 45% van omzet (Ariston)</td></tr><tr><td>Onderhoudskosten per jaar</td><td class="n">€ 40 mln, −10%</td><td class="tag b">bron</td><td class="small">Deloitte: −5–10%; wij nemen de bovenkant</td></tr><tr><td>Afkeur en herstelwerk per jaar</td><td class="n">€ 40 mln, −20%</td><td class="tag b">bron</td><td class="small">P&G met AI-camera's: −10–20%</td></tr><tr><td>Energiekosten per jaar</td><td class="n">€ 30 mln, −8%</td><td class="tag b">bron</td><td class="small">IEA: AI bespaart 3–10% energie</td></tr><tr><td>Baten bereikt per jaar</td><td class="n">20% / 60% / 100%</td><td class="tag a">aanname</td><td class="small">2027 / 2028 / 2029, volgt de uitrol</td></tr><tr><td>Investering / jaarlijkse runkosten</td><td class="n">€ 37 mln / € 7 mln</td><td class="tag a">aanname</td><td class="small">Opbouw op pagina 3</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Wat we bijstellen t.o.v. het concept</h2>
+      <table>
+        <tr><th></th><th class="n">Concept</th><th class="n">Nu</th></tr>
+        <tr><td>Extra capaciteit</td><td class="n">15–25%</td><td class="n">5%</td></tr>
+        <tr><td>Extra omzet per jaar</td><td class="n">€ 300–500 mln</td><td class="n">€ 50 mln</td></tr>
+        <tr><td>Telt als waarde</td><td class="n">omzet</td><td class="n">marge</td></tr>
+        <tr><td>Kosten</td><td class="n">niet bepaald</td><td class="n">€ 37 mln</td></tr>
+      </table>
+      <p class="small" style="margin-top:3mm">15–25% extra capaciteit vraagt een OEE van bijna world class en 4 à 6 keer de groei van
+      beursgenoteerde concurrenten. Dat houdt geen stand bij een kritische CFO.</p>
+      <div class="flag" style="margin-top:4mm"><b>Labels.</b> <i>groep</i> = groepsconcept · <i>bron</i> = openbare benchmark (pagina 4) ·
+      <i>aanname</i> = onze inschatting, te valideren met pilot, Finance, Operations en Sales.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Buderus · Groep 3 · Business case innovatieprogramma v4 · fictieve casus · bedragen in € miljoen</span><span>1 / 4</span></div>
+</section>
+<section class="page">
+  <div class="eyebrow">Pagina 2 · De business case van het innovatieprogramma</div>
+  <h1>Eén digitaal fundament, vier toepassingen, terugverdiend in ≈ 2,5 jaar</h1>
+  <p class="lead">Het programma koppelt de fabrieken aan één gezamenlijk data- en AI-platform. Daarop draaien vier toepassingen
+  die stilstand, afkeur en energieverbruik verlagen. De besturing van de machines blijft lokaal: AI adviseert, mensen beslissen.</p>
+  <div class="box"><b>Bestuurskeuze.</b> Standaardiseer het digitale fundament op groepsniveau; fabrieken passen het toe binnen
+  hun lokale OT-, veiligheids- en continuïteitsgrenzen; schaal per fabriek en per toepassing op zodra waarde, technische geschiktheid
+  en continuïteit zijn aangetoond.</div>
+  <h2>Vier toepassingen en hun jaarlijkse waarde bij volledige uitrol</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-bottom:6mm">
+    <div class="lever"><b>Voorspellend onderhoud</b><span class="small">IoT-sensoren op machines; AI voorspelt storingen dagen vooruit. Reparatie in gepland onderhoud.</span><div class="v" style="margin-top:2mm">€ 16,9 mln per jaar</div></div><div class="lever"><b>Live OEE per lijn</b><span class="small">Lijndata via edge naar MES; één OEE-definitie voor alle fabrieken. AI wijst de grootste verliezen aan.</span><div class="v" style="margin-top:2mm">€ 10,6 mln per jaar</div></div><div class="lever"><b>AI-kwaliteitscontrole</b><span class="small">Camera's met AI vangen fouten bij het station, niet pas aan het eind van de lijn of bij de klant.</span><div class="v" style="margin-top:2mm">€ 8,0 mln per jaar</div></div><div class="lever"><b>AI-energiesturing</b><span class="small">Meten per lijn; AI schakelt stilstaand verbruik en pieken af. Lagere kosten en minder CO₂.</span><div class="v" style="margin-top:2mm">€ 2,4 mln per jaar</div></div>
+  </div>
+  <div class="cols">
+    <div>
+      <h2>Waarom dit werkt</h2>
+      <ul style="margin:0;padding-left:5mm">
+        <li><b>Marge, geen omzet.</b> Alleen verkoopbare extra output telt, tegen de brutomarge.</li>
+        <li><b>Schaal betaalt het platform.</b> Het fundament is een vaste kost; elke extra lijn en toepassing voegt waarde toe tegen lage meerkosten.</li>
+        <li><b>Veilig en continu.</b> OT-segmentatie per fabriek; bij uitval van de verbinding draait de fabriek gewoon door.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Uitrol in drie golven, met poorten</h2>
+      <ol class="steps">
+        <li><b>2027:</b> pilotfabriek + 2 fabrieken. Meet OEE, juistheid van AI-meldingen en adoptie.</li>
+        <li><b>2028:</b> standaardlijnen in alle fabrieken, als golf 1 de criteria haalt.</li>
+        <li><b>2029:</b> legacy-lijnen en de laatste toepassingen. De plantmanager houdt go/no-go bij veiligheidsrisico.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="foot"><span>Buderus · Groep 3 · Business case innovatieprogramma v4 · fictieve casus · bedragen in € miljoen</span><span>2 / 4</span></div>
+</section>
+<section class="page">
+  <div class="eyebrow">Pagina 3 · Kosten en baten 2027–2029</div>
+  <h1>€ 37 mln investering, terugverdiend na ≈ 2,5 jaar</h1>
+  <div class="kpis">
+    <div class="kpi"><div class="v">€ 37 mln</div><div class="l">Investering, gespreid over 3 jaar</div></div>
+    <div class="kpi"><div class="v">€ 37,9 mln</div><div class="l">Baten per jaar bij volledige uitrol (2029)</div></div>
+    <div class="kpi"><div class="v">2,5 jaar</div><div class="l">Terugverdientijd (kasstroom, vóór belasting)</div></div>
+    <div class="kpi"><div class="v">€ 9,4 mln</div><div class="l">Netto contante waarde na 3 jaar (8%)</div></div>
+  </div>
+  <div class="cols" style="grid-template-columns:1.25fr 1fr">
+    <div>
+      <h2>Kasstroom</h2>
+      <table>
+        <tr><th>€ mln</th><th class="n">2027</th><th class="n">2028</th><th class="n">2029</th><th class="n">Totaal</th></tr>
+        <tr class=""><td>Meer output: minder stilstand, hogere OEE</td><td class="n">4,7</td><td class="n">14,1</td><td class="n">23,5</td><td class="n">42,3</td></tr><tr class=""><td>Lagere onderhoudskosten</td><td class="n">0,8</td><td class="n">2,4</td><td class="n">4,0</td><td class="n">7,2</td></tr><tr class=""><td>Minder afkeur en herstelwerk</td><td class="n">1,6</td><td class="n">4,8</td><td class="n">8,0</td><td class="n">14,4</td></tr><tr class=""><td>Lagere energiekosten</td><td class="n">0,5</td><td class="n">1,4</td><td class="n">2,4</td><td class="n">4,3</td></tr>
+        <tr class="tot"><td>Totaal baten</td><td class="n">7,6</td><td class="n">22,7</td><td class="n">37,9</td><td class="n">68,2</td></tr>
+        <tr class=""><td>Runkosten (platform, licenties, team)</td><td class="n">−4,0</td><td class="n">−6,0</td><td class="n">−7,0</td><td class="n">−17,0</td></tr>
+        <tr class=""><td>Investering</td><td class="n">−20,0</td><td class="n">−12,0</td><td class="n">−5,0</td><td class="n">−37,0</td></tr>
+        <tr class="tot"><td>Netto kasstroom</td><td class="n">−16,4</td><td class="n">4,7</td><td class="n">25,9</td><td class="n">14,2</td></tr>
+        <tr class="key"><td>Cumulatief</td><td class="n">−16,4</td><td class="n">−11,7</td><td class="n">14,2</td><td class="n">14,2</td></tr>
+      </table>
+      <h2 style="margin-top:3.5mm">Effect op de winst- en verliesrekening</h2>
+      <table>
+        <tr><th>€ mln</th><th class="n">2027</th><th class="n">2028</th><th class="n">2029</th><th class="n">Totaal</th></tr>
+        <tr class=""><td>Baten</td><td class="n">7,6</td><td class="n">22,7</td><td class="n">37,9</td><td class="n">68,2</td></tr>
+        <tr class=""><td>Runkosten</td><td class="n">−4,0</td><td class="n">−6,0</td><td class="n">−7,0</td><td class="n">−17,0</td></tr>
+        <tr class="tot"><td>EBITDA-effect</td><td class="n">3,6</td><td class="n">16,7</td><td class="n">30,9</td><td class="n">51,2</td></tr>
+        <tr class=""><td>Afschrijving (5 jaar)</td><td class="n">−4,0</td><td class="n">−6,4</td><td class="n">−7,4</td><td class="n">−17,8</td></tr>
+        <tr class="tot"><td>EBIT-effect</td><td class="n">−0,4</td><td class="n">10,3</td><td class="n">23,5</td><td class="n">33,4</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Waar de investering in gaat</h2>
+      <table>
+        <tr><td>Centraal data- en AI-platform, integratie ERP/MES</td><td class="n">8</td></tr><tr><td>OT-segmentatie, beveiliging en edge per fabriek</td><td class="n">7</td></tr><tr><td>Sensoren en lijnkoppeling, 120 lijnen (incl. 18 legacy)</td><td class="n">12</td></tr><tr><td>AI-camera's kwaliteit (≈ 60 stations)</td><td class="n">5</td></tr><tr><td>Energiemetering, 10 fabrieken</td><td class="n">2</td></tr><tr><td>Verandering, training en programma</td><td class="n">3</td></tr>
+        <tr class="tot"><td>Totaal investering</td><td class="n">37</td></tr>
+        <tr><td class="small">Run: Platform, cloud en licenties</td><td class="n small">3,0</td></tr><tr><td class="small">Run: Data- en AI-team, OT-security monitoring</td><td class="n small">2,5</td></tr><tr><td class="small">Run: Beheer hardware en modellen</td><td class="n small">1,5</td></tr>
+      </table>
+      <h2 style="margin-top:3.5mm">Gevoeligheid terugverdientijd</h2>
+      <table>
+        <tr class="key"><td>Basis</td><td class="n">2,5 jaar</td></tr><tr class=""><td>Vraag lager: 25% i.p.v. 50% verkoopbaar</td><td class="n">3,4 jaar</td></tr><tr class=""><td>Kosten 25% hoger</td><td class="n">3,0 jaar</td></tr><tr class=""><td>Uitrol 1 jaar later (baten 0 / 20 / 60%)</td><td class="n">3,8 jaar</td></tr>
+      </table>
+      <p class="small" style="margin-top:2mm">Vraag is de grootste gevoeligheid: kan de extra output niet verkocht worden, dan schuift de terugverdientijd naar ruim 3 jaar.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Buderus · Groep 3 · Business case innovatieprogramma v4 · fictieve casus · bedragen in € miljoen</span><span>3 / 4</span></div>
+</section>
+<section class="page">
+  <div class="eyebrow">Pagina 4 · Referenties en benchmarks</div>
+  <h1>Onze aannames liggen binnen de sectorbandbreedte</h1>
+  <p class="lead">Openbare cijfers dienen als toets op plausibiliteit, niet als pilotresultaat. Leveranciers- en secundaire bronnen
+  gebruiken we als bandbreedte.</p>
+  <table>
+    <tr><th style="width:17%">Onderwerp</th><th style="width:38%">Benchmark</th><th style="width:20%">Onze aanname</th><th>Bron</th></tr>
+    <tr><td><b>Omzet en kostenstructuur</b></td><td>Ariston: € 2,7 mld omzet, 32 fabrieken, materiaal 45%, EBITDA 11,5%, groei +3%</td><td>Omzetschaal, marge 47%</td><td class="small">Ariston Group (2026), FY2025 results</td></tr><tr><td><b>Peers</b></td><td>BDR Thermea: € 1,9 mld, 14 fabrieken, EBITDA ≈ 8%. Bosch Home Comfort: ≈ € 4,4 mld</td><td>€ 2 mld is plausibel</td><td class="small">BDR Thermea (2026); Bosch (2026)</td></tr><tr><td><b>OEE</b></td><td>Typische fabriek 60–67%; world class 85%</td><td>Van 65% naar 68%</td><td class="small">WorkTrek (2025); TeepTrak (2026); Nakajima (1988)</td></tr><tr><td><b>Kosten van stilstand</b></td><td>Ongeplande stilstand kost de 500 grootste bedrijven ≈ 11% van de omzet</td><td>Stilstand is de grootste hefboom</td><td class="small">Siemens (2024), True cost of downtime</td></tr><tr><td><b>Voorspellend onderhoud</b></td><td>Uptime +10–20%; onderhoudskosten −5–10%</td><td>Onderhoud −10%</td><td class="small">Deloitte (2024), Predictive maintenance</td></tr><tr><td><b>AI-kwaliteitscontrole</b></td><td>Afkeur −10–20% met AI-camera's (P&G met Siemens)</td><td>Afkeur −20%</td><td class="small">Manufacturing Digital (2024)</td></tr><tr><td><b>AI-energiesturing</b></td><td>AI-procesoptimalisatie bespaart 3–10% energie</td><td>Energie −8%</td><td class="small">IEA (2025), Energy and AI</td></tr><tr><td><b>Best in class (plafond)</b></td><td>WEF Lighthouse-fabrieken: defecten −41%, energie −28%</td><td>Wij blijven ruim onder dit plafond</td><td class="small">World Economic Forum (2025)</td></tr><tr><td><b>Kosten sensoren</b></td><td>Draadloos meetpunt ≈ $ 200–500 geïnstalleerd; abonnement $ 200–800 per machine per jaar</td><td>≈ € 100k per lijn incl. engineering</td><td class="small">Tractian (2025)</td></tr><tr><td><b>Kapitaalkosten</b></td><td>Gemiddelde WACC 7,9%</td><td>Disconto 8%</td><td class="small">KPMG (2026), Cost of capital study</td></tr>
+  </table>
+  <p class="small" style="margin-top:4mm">Volledige bronvermelding met links: <i>context/sources.md</i> in de groepsrepository. Het gedetailleerde model
+  (opties, 7-jaarsbeeld, stresstests) staat in <i>v3-business-case-model.xlsx</i>.</p>
+  <div class="foot"><span>Buderus · Groep 3 · Business case innovatieprogramma v4 · fictieve casus · bedragen in € miljoen</span><span>4 / 4</span></div>
+</section></body></html>
