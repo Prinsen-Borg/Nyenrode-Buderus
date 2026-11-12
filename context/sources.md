@@ -26,6 +26,23 @@ Label used elsewhere in the repo: **[source]**. Anything without a source here i
 
 Note: B1 is a secondary review. Before quoting McKinsey or Deloitte directly in the paper, find and cite the original reports, as B1 itself advises.
 
+## Business case v3 (calibration and industry benchmarks, accessed 12 November 2026)
+
+| # | Source | What we take from it | Used in |
+|---|---|---|---|
+| V1 | Ariston Group. (2026, March 3). *FY 2025 results* [Press release, analyst presentation]. [aristongroup.com](https://www.aristongroup.com/en/investors) | Cost structure (material 45.3%, services 18.2%, personnel 24.6%), adj. EBITDA 11.5%, D&A 5.1%, organic growth +3% | Business case v3 (baseline P&L) |
+| V2 | BDR Thermea Group. (2026, March 30). *Annual review 2025*. [bdrthermeagroup.com](https://www.bdrthermeagroup.com) | Net sales ≈ €1.9 bn, 14 plants, normalised EBITDA ≈ 8% | Business case v3 (peer median margin) |
+| V3 | Siemens. (2024). *The true cost of downtime 2024*. [siemens.com](https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf) | Unplanned downtime ≈ 11% of revenue for the 500 largest companies | Business case v3 (context) |
+| V4 | Deloitte. (2024). *Predictive maintenance* [Position paper]. [deloitte.com](https://www.deloitte.com/content/dam/assets-zone2/de/de/docs/about/2024/Deloitte_Predictive-Maintenance_PositionPaper.pdf) | Uptime +10–20%, maintenance cost −5–10%, planning time −20–50% | Business case v3 (lever L1) |
+| V5 | World Economic Forum. (2025). *Global Lighthouse Network 2025*. [weforum.org](https://www.weforum.org/press/2025/01/global-lighthouse-network-2025-world-economic-forum-recognizes-companies-transforming-manufacturing-through-innovation/) | Best-in-class ceiling: defects −41%, energy −28% | Business case v3 (upper bound) |
+| V6 | Manufacturing Digital. (2024). *How P&G cut scrap up to 20% with AI inspection*. [manufacturingdigital.com](https://manufacturingdigital.com/news/quality-how-p-g-cut-scrap-up-to-20-with-ai-inspection) | AI visual inspection: scrap −10–20% | Business case v3 (lever L3) |
+| V7 | International Energy Agency. (2025). *Energy and AI*. [iea.org](https://www.iea.org/reports/energy-and-ai) | AI process optimisation: 3–10% of energy cost | Business case v3 (lever L4) |
+| V8 | WorkTrek. (2025). *Debunking 7 myths about OEE*; TeepTrak. (2026). *OEE benchmark 2026*. [worktrek.com](https://worktrek.com/blog/overall-equipment-effectiveness/), [teeptrak.com](https://teeptrak.com/en/oee-benchmark-2026/) | Typical OEE ≈ 60–67%, world class ≈ 85% (vendor data, indicative) | Business case v3 (baseline OEE) |
+| V9 | Tractian. (2025). *The true cost of a condition monitoring program*. [tractian.com](https://tractian.com/en/blog/the-true-cost-of-a-condition-monitoring-program) | Installed cost per wireless sensor point and subscription ranges (vendor data) | Business case v3 (cost per line) |
+| V10 | KPMG. (2026). *Cost of capital study 2026*. [kpmg.com](https://kpmg.com/de/en/insights/business-performance-and-resilience/capital-cost-study.html) | Average WACC 7.9% | Business case v3 (discount rate) |
+
+Several of these are vendor or secondary sources: use them as ranges, and cite original reports in the paper. Codes inside the workbook (P1, B3, W1, ...) map to this table on tab 2 §I.
+
 ## Frameworks and trends
 
 | # | Source | What we take from it | Used in |
